@@ -34,7 +34,8 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-
+    models.Plans.findOneAndRemove(req.params.id).then(() =>res.json({request:'received'}) )
+   
 })
 router.delete('/:id/drink/:drinkId', (req, res) => {
     models.Plans.findOne({'_id':req.params.id}).then(plan => {
