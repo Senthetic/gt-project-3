@@ -17,6 +17,8 @@ app.get("/api/config", (req, res) => {
   });
 });
 
+app.use('/api/plans', require('./backend/routes/plans'))
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
@@ -33,6 +35,8 @@ mongoose
     console.log("Unable to connect to database.");
     console.log(err);
   });
+
+
 
 app.listen(PORT, () => {
   console.log(`Express server running on http://localhost:${PORT}`);
