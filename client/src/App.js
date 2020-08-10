@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./containers/Home/Home";
 import NoMatch from "./containers/NoMatch/NoMatch";
+import { makeStyles } from "@material-ui/core/styles"
+const useStyles = makeStyles((theme) => {
 
+})
 
 function App() {
+  const classes = useStyles();
   useEffect(() => {
     axios
       .get("/api/config")
