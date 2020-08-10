@@ -19,7 +19,32 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    models.Plans.findOn
+    models.Plans.findOne({_id:req.params.id}).then(plan => {
+        plan.drinks.push({
+            size: req.body.size,
+            name:req.body.name,
+            category: req.body.category,
+            alcoholPercentage: req.body.alcoholPercentage,
+        })
+        plan.save();
+        res.json(plan)
+    }).catch(err => {
+        res.status(404)
+    })
+})
+
+router.delete('/:id', (req, res) => {
+
+})
+router.delete('/:id/drink/:drinkId', (req, res) => {
+    models.Plans.findOne({'_id':req.params.id}).then(plan => {
+        plan.drinks = plan.drinks.filter(drink => drink._id != req.params.drinkId);
+        plan.save();
+        res.json(plan)
+    }).catch(err => {
+        res.status(404)
+    })
+
 })
 
 module.exports = router;
