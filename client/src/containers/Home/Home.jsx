@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +23,7 @@ const Home = () => {
 
   return (
     <>
+    <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
           <TextField
@@ -57,6 +61,12 @@ const Home = () => {
       </Button>
         </div>
       </form>
+      <Fab color="primary" aria-label="add">
+  <AddIcon />
+</Fab>
+<Fab color="secondary" aria-label="edit">
+  <EditIcon />
+</Fab>
     </>
   );
 };
