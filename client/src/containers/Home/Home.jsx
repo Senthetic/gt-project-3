@@ -33,6 +33,9 @@ const Home = () => {
   const classes = useStyles();
   const [abv, setAbv] = React.useState("");
   // const [bac, setBac] = React.useState('');
+  // const [ounces, setOunces] = React.useState('');
+  // const [weight, setWeight] = React.useState('');
+  // const [hours, setHours] = React.useState('');
 
   const handleChange = (event) => {
     //possibly where we would add the math to calculate BAC
