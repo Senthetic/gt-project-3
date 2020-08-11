@@ -6,6 +6,8 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 
+import DrinkSelector from "../../components/DrinkSelector"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -21,9 +23,12 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
 
+  
+
   return (
     <>
     <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
+    <DrinkSelector variant="outlined"/>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
           <TextField
