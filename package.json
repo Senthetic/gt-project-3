@@ -25,11 +25,12 @@
   },
   "homepage": "https://github.com/Bcook131/gt-project-3#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.28",
-    "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0"
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "concurrently": "^5.3.0"
