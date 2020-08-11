@@ -48,6 +48,7 @@ const Home = () => {
     //       "You would be considered legally intoxicated in all or most states and would be subject to criminal penalties.";
     //   if (newBac < 0.08) message = "Your driving ability is becoming impaired.";
     // }
+    //set new calculated bac and have it update with state on the page
     // setBac(newBac);
     setAbv(event.target.value);
   };
