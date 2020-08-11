@@ -22,7 +22,7 @@ const seed = () => {
     drinks.forEach(drink => {
         models.DrinkCategories.create({
             genericName: Object.keys(drink)[0],
-            averageAlcohol: drink(Object.keys(drink)[0])
+            averageAlcohol: drink[Object.keys(drink)[0]]
         })
        
     })
