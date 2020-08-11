@@ -53,7 +53,9 @@ const Home = () => {
     // }
     //set new calculated bac and have it update with state on the page
     // setBac(newBac);
+
     setAbv(event.target.value);
+    console.log(abv);
   };
 
   return (
@@ -123,6 +125,7 @@ const Home = () => {
           label="Volume"
           type="number"
           helperText="oz"
+          //question multiple onChanges? in order to keep updating state onChange={handleChange}
           InputLabelProps={{
             shrink: true,
           }}
