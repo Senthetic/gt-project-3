@@ -6,6 +6,8 @@ import NoMatch from "./containers/NoMatch/NoMatch";
 import NewPlan from "./containers/NewPlan/NewPlan";
 import ViewPlans from "./containers/ViewPlans/ViewPlans";
 import EditPlan from "./containers/EditPlan/EditPlan";
+import AddDrink from "./containers/AddDrink/AddDrink";
+
 
 function App() {
   useEffect(() => {
@@ -23,12 +25,13 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/NewPlan" component={NewPlan} />
+        <Route exact path="/AddDrink" component={AddDrink} />
         <Route exact path="/ViewPlans" component={ViewPlans} />
         <Route exact path="/EditPlan" component={EditPlan} />
         <Route component={Home} />
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
