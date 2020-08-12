@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NewPlan = () => {
+const ViewPlans = () => {
   const classes = useStyles();
   const [abv, setAbv] = React.useState("");
   // const [bac, setBac] = React.useState('');
@@ -127,4 +127,4 @@ const NewPlan = () => {
   );
 };
 
-export default NewPlan;
+export default ViewPlans;
