@@ -10,6 +10,8 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 
+import DrinkSelector from "../../components/DrinkSelector"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -53,9 +55,12 @@ const Home = () => {
     setAbv(event.target.value);
   };
 
+  
+
   return (
     <>
-      <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
+    <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
+    <DrinkSelector variant="outlined"/>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
           <TextField
