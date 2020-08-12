@@ -59,7 +59,7 @@ const NewPlan = () => {
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
                 id="outlined-basic"
-                label="Edit Plan Name"
+                label="Plan Name"
                 variant="outlined"
               />
             </form>
