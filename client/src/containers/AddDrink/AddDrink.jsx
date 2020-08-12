@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AddDrink = ({match}) => {
   const classes = useStyles();
+  const [drink, setDrink] = React.useState({})
 
 
   const handleChange = (event) => {
@@ -52,7 +53,7 @@ const AddDrink = ({match}) => {
         <MenuItem value={12}>Wine</MenuItem>
         <MenuItem value={40}>Liquor</MenuItem>
       </Select>
-      <DrinkSelector variant="standard"/>
+      <DrinkSelector onSelected={ev => setDrink({...drink,name:ev.target.value})} variant="standard"/>
       <TextField
         required
         id="outlined-basic"
