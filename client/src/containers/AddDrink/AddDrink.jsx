@@ -58,6 +58,17 @@ const AddDrink = () => {
         type="string"
         helperText="ex: Bud Light"
       />
+      <TextField
+          required
+          id="standard-number"
+          label="Volume"
+          type="number"
+          helperText="oz"
+          //question multiple onChanges? in order to keep updating state onChange={handleChange}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
     </FormControl>
     </div>
     );
