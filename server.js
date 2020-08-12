@@ -40,6 +40,7 @@ app.get("/api/config", (req, res) => {
 
 app.use('/api/plans', require('./backend/routes/plans'))
 app.use('/api/drinkcategories', require('./backend/routes/drinkCategory'))
+app.use('/api/drinks', require('./backend/routes/drinks'))
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
