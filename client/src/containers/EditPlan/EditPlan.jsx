@@ -11,6 +11,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import DrinkSelector from "../../components/DrinkSelector";
 
@@ -84,13 +86,12 @@ const EditPlan = () => {
             item
             xs={1}
           >
-            
-            <Fab color="secondary" aria-label="add">
-              <AddIcon />
-            </Fab>
-            <Fab color="secondary" aria-label="add">
-              <AddIcon />
-            </Fab>
+            <IconButton aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
+            <IconButton aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
           </Grid>
 
           <Grid
@@ -106,20 +107,20 @@ const EditPlan = () => {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-            <form className={classes.root} noValidate autoComplete="off">
+          <form className={classes.root} noValidate autoComplete="off">
             <TextField
-            required
-            id="standard-number"
-            label="Time frame"
-            type="number"
-            helperText="hours"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-            </form>
-          </Grid>
-          <Button className={classes.button} variant="contained" color="primary">
+              required
+              id="standard-number"
+              label="Time frame"
+              type="number"
+              helperText="hours"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </form>
+        </Grid>
+        <Button className={classes.button} variant="contained" color="primary">
           Submit
         </Button>
       </div>

@@ -11,6 +11,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import DrinkSelector from "../../components/DrinkSelector";
 
@@ -68,11 +70,11 @@ const ViewPlans = () => {
             item
             xs={1}
           >
-            <Fab color="primary" aria-label="add">
-              <AddIcon />
+            <Fab color="secondary" aria-label="edit">
+              <EditIcon />
             </Fab>
-            <Fab color="primary" aria-label="add">
-              <AddIcon />
+            <Fab color="secondary" aria-label="edit">
+              <EditIcon />
             </Fab>
           </Grid>
           <Grid
@@ -83,12 +85,12 @@ const ViewPlans = () => {
             item
             xs={1}
           >
-            <Fab color="secondary" aria-label="edit">
-              <EditIcon />
-            </Fab>
-            <Fab color="secondary" aria-label="edit">
-              <EditIcon />
-            </Fab>
+            <IconButton aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
+            <IconButton aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
           </Grid>
 
           <Grid
