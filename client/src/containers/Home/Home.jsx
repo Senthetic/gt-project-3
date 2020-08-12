@@ -67,6 +67,7 @@ const Home = () => {
     <h1>Thirsty?</h1>
     <Button>Make New Plan</Button>
     <Button>View User's Plans</Button>
+    
     {/* <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
     <DrinkSelector variant="outlined"/>
       <form className={classes.root} noValidate autoComplete="off">
