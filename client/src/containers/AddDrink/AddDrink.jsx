@@ -69,6 +69,9 @@ const AddDrink = () => {
             shrink: true,
           }}
         />
+        <Button className={classes.button} variant="contained" color="primary">
+          Submit
+        </Button>
     </FormControl>
     </div>
     );
