@@ -3,6 +3,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./containers/Home/Home";
 import NoMatch from "./containers/NoMatch/NoMatch";
+import NewPlan from "./containers/NewPlan/NewPlan";
 // import { makeStyles } from "@material-ui/core/styles"
 // import TextField from '@material-ui/core/TextField';
 
@@ -35,7 +36,8 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route component={NoMatch} />
+        <Route exact path="/NewPlan" component={NewPlan} />
+        <Route component={Home} />
       </Switch>
     </Router>
   );
