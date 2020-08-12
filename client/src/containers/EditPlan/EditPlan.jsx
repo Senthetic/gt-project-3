@@ -13,6 +13,8 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Api from "../../utils/api"
+import {Link} from "react-router-dom"
 
 import DrinkSelector from "../../components/DrinkSelector";
 
@@ -44,7 +46,10 @@ const useStyles = makeStyles((theme) => ({
 const EditPlan = (props) => {
   const [plan, setPlan] = React.useState({});
   useEffect(()=>{
-    setPlan(props.match.params.planId)
+    Api.get('/plans/'+props.match.params.planId).then(data => {
+      setPlan(data.data)
+    })
+    
     console.log(props)
   },[])
   const classes = useStyles();
@@ -68,6 +73,9 @@ const EditPlan = (props) => {
                 id="outlined-basic"
                 label="Edit Plan Name"
                 variant="outlined"
+                defaultValue="loading..."
+                value={plan.name}
+                onChange={ev => setPlan({...plan,name: ev.target.value})}
               />
             </form>
           </Grid>
@@ -79,9 +87,11 @@ const EditPlan = (props) => {
             item
             xs={1}
           >
-            <Fab color="primary" aria-label="add">
-              <AddIcon />
-            </Fab>
+            <Link to={'/addDrink/'+plan._id}>
+              <Fab color="primary" aria-label="add">
+                <AddIcon />
+              </Fab>
+            </Link>
           </Grid>
           <Grid
             container

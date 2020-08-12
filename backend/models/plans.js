@@ -7,6 +7,9 @@ const PlanSchema = new mongoose.Schema({
     userId:{
         type: String
     },
+    name:{
+        type:String
+    },
     drinks:[{
         size:{
             type: String,

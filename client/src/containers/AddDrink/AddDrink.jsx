@@ -6,6 +6,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import DrinkSelector from "../../components/DrinkSelector"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddDrink = () => {
+const AddDrink = ({match}) => {
   const classes = useStyles();
 
 
@@ -51,6 +52,7 @@ const AddDrink = () => {
         <MenuItem value={12}>Wine</MenuItem>
         <MenuItem value={40}>Liquor</MenuItem>
       </Select>
+      <DrinkSelector variant="standard"/>
       <TextField
         required
         id="outlined-basic"

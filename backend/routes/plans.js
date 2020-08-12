@@ -10,6 +10,14 @@ router.get('/', (req, res) => {
     
 })
 
+router.get('/:planId', (req, res) => {
+    
+    models.Plans.findOne({userId:1, _id:req.params.planId}).then(plans => {
+        res.json(plans)
+    })
+    
+})
+
 router.post('/', (req, res) => {
     models.Plans.create({
         userId:1,
