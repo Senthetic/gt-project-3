@@ -57,11 +57,7 @@ const ViewPlans = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <form className={classes.root} noValidate autoComplete="off">
-              <TextField
-                id="outlined-basic"
-                label="Edit Plan Name"
-                variant="outlined"
-              />
+              <h2>Your Plans</h2>
             </form>
           </Grid>
           <Grid
@@ -75,6 +71,9 @@ const ViewPlans = () => {
             <Fab color="primary" aria-label="add">
               <AddIcon />
             </Fab>
+            <Fab color="primary" aria-label="add">
+              <AddIcon />
+            </Fab>
           </Grid>
           <Grid
             container
@@ -84,12 +83,11 @@ const ViewPlans = () => {
             item
             xs={1}
           >
-            
-            <Fab color="secondary" aria-label="add">
-              <AddIcon />
+            <Fab color="secondary" aria-label="edit">
+              <EditIcon />
             </Fab>
-            <Fab color="secondary" aria-label="add">
-              <AddIcon />
+            <Fab color="secondary" aria-label="edit">
+              <EditIcon />
             </Fab>
           </Grid>
 
@@ -101,25 +99,27 @@ const ViewPlans = () => {
             item
             xs={6}
           >
-            <Paper className={classes.paper}>Bud Light</Paper>
-            <Paper className={classes.paper}>Scofflaw Basement</Paper>
+            <Paper className={classes.paper}>Close to Blackout</Paper>
+            <Paper className={classes.paper}>
+              Recipe for avoiding disaster
+            </Paper>
           </Grid>
         </Grid>
         <Grid item xs={12}>
-            <form className={classes.root} noValidate autoComplete="off">
+          <form className={classes.root} noValidate autoComplete="off">
             <TextField
-            required
-            id="standard-number"
-            label="Time frame"
-            type="number"
-            helperText="hours"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-            </form>
-          </Grid>
-          <Button className={classes.button} variant="contained" color="primary">
+              required
+              id="standard-number"
+              label="Time frame"
+              type="number"
+              helperText="hours"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </form>
+        </Grid>
+        <Button className={classes.button} variant="contained" color="primary">
           Submit
         </Button>
       </div>

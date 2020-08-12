@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NewPlan = () => {
+const EditPlan = () => {
   const classes = useStyles();
   const [abv, setAbv] = React.useState("");
   // const [bac, setBac] = React.useState('');
@@ -59,7 +59,7 @@ const NewPlan = () => {
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
                 id="outlined-basic"
-                label="Plan Name"
+                label="Edit Plan Name"
                 variant="outlined"
               />
             </form>
@@ -127,4 +127,4 @@ const NewPlan = () => {
   );
 };
 
-export default NewPlan;
+export default EditPlan;

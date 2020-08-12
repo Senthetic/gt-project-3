@@ -4,33 +4,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./containers/Home/Home";
 import NoMatch from "./containers/NoMatch/NoMatch";
 import NewPlan from "./containers/NewPlan/NewPlan";
-<<<<<<< HEAD
-<<<<<<< HEAD
+import ViewPlans from "./containers/ViewPlans/ViewPlans";
+import EditPlan from "./containers/EditPlan/EditPlan";
 import AddDrink from "./containers/AddDrink/AddDrink";
-=======
-import ViewPlans from "./containers/ViewPlans/ViewPlans"
->>>>>>> b52d2d4a51605a3cb241113f5e1c9cdeefddf6f6
-=======
-import ViewPlans from "./containers/ViewPlans/ViewPlans"
->>>>>>> b52d2d4a51605a3cb241113f5e1c9cdeefddf6f6
-// import { makeStyles } from "@material-ui/core/styles"
-// import TextField from '@material-ui/core/TextField';
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     '& .MuiTextField-root': {
-//       margin: theme.spacing(1),
-//       width: '25ch',
-//     },
-//   },
-// }));
-
-// export default function FormPropsTextFields() {
-//   const classes = useStyles();
 
 
 function App() {
-  // const classes = useStyles();
   useEffect(() => {
     axios
       .get("/api/config")
@@ -46,15 +25,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/NewPlan" component={NewPlan} />
-<<<<<<< HEAD
-<<<<<<< HEAD
         <Route exact path="/AddDrink" component={AddDrink} />
-=======
         <Route exact path="/ViewPlans" component={ViewPlans} />
->>>>>>> b52d2d4a51605a3cb241113f5e1c9cdeefddf6f6
-=======
-        <Route exact path="/ViewPlans" component={ViewPlans} />
->>>>>>> b52d2d4a51605a3cb241113f5e1c9cdeefddf6f6
+        <Route exact path="/EditPlan" component={EditPlan} />
         <Route component={Home} />
       </Switch>
     </Router>
