@@ -11,6 +11,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import Api from "../../utils/api"
+import {useHistory} from 'react-router-dom'
 
 import DrinkSelector from "../../components/DrinkSelector";
 
@@ -40,7 +42,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NewPlan = () => {
+  const history = useHistory();
   const classes = useStyles();
+  const [planName, setPlanName] = React.useState("");
   const [abv, setAbv] = React.useState("");
   // const [bac, setBac] = React.useState('');
   // const [ounces, setOunces] = React.useState('');
@@ -50,6 +54,10 @@ const NewPlan = () => {
   const handleChange = (event) => {
     console.log(abv);
   };
+  const createPlane = ()=>{
+    Api.post('/plans',{name:planName})
+    .then(plan => history.push('/editPlan/'+plan.data._id))
+  }
 
   return (
     <>
@@ -61,6 +69,7 @@ const NewPlan = () => {
                 id="outlined-basic"
                 label="Plan Name"
                 variant="outlined"
+                onChange={ev => setPlanName(ev.target.value)}
               />
             </form>
           </Grid>
@@ -72,7 +81,7 @@ const NewPlan = () => {
             item
             xs={1}
           >
-            <Fab color="primary" aria-label="add">
+            <Fab color="primary" aria-label="add" onClick={createPlane}>
               <AddIcon />
             </Fab>
           </Grid>

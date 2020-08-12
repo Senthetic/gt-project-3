@@ -11,6 +11,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import DrinkSelector from "../../components/DrinkSelector"
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,7 +66,10 @@ const Home = () => {
   return (
     <>
     <h1>Thirsty?</h1>
-    <Button>Make New Plan</Button>
+    <Link to="/newPlan">
+      <Button>Make New Plan</Button>
+    </Link>
+    
     <Button>View User's Plans</Button>
     
     {/* <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>

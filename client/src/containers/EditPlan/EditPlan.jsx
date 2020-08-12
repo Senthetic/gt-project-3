@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -41,7 +41,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditPlan = () => {
+const EditPlan = (props) => {
+  const [plan, setPlan] = React.useState({});
+  useEffect(()=>{
+    setPlan(props.match.params.planId)
+    console.log(props)
+  },[])
   const classes = useStyles();
   const [abv, setAbv] = React.useState("");
   // const [bac, setBac] = React.useState('');
