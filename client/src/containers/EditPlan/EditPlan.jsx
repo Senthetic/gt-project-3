@@ -20,6 +20,9 @@ import Snackbar from "@material-ui/core/Snackbar";
 import DrinkSelector from "../../components/DrinkSelector";
 
 let result = 0;
+let ounces = 0;
+let percent = 0;
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 const EditPlan = (props) => {
   const [plan, setPlan] = React.useState({ drinks: [] });
   const [timeSlot, setTimeSlot] = React.useState(0);
+  const [weight, setWeight] = React.useState(0);
   const [openSnackbar, setOpenSnackbar] = React.useState(true);
   useEffect(() => {
     getPlan();
@@ -58,13 +62,14 @@ const EditPlan = (props) => {
     console.log(props);
   }, []);
   const classes = useStyles();
-  const [abv, setAbv] = React.useState("");
+  const [abv, setAbv] = React.useState(0);
   // const [bac, setBac] = React.useState('');
   // const [ounces, setOunces] = React.useState('');
   // const [weight, setWeight] = React.useState('');
   // const [hours, setHours] = React.useState('');
 
-  const handleChange = (event) => {
+  const handleAbv = (event) => {
+    setAbv(result);
     console.log(abv);
   };
   const getPlan = () => {
@@ -79,14 +84,18 @@ const EditPlan = (props) => {
   const handleTime = (event) => {
     console.log(event.target.value);
 
-    setTimeSlot(event.value);
+    setTimeSlot(event.target.value);
+  };
+  const handleWeight = (event) => {
+    console.log(event.target.value);
+
+    setWeight(event.target.value);
   };
   //added boilerplate calculator
   const calculateBAC = () => {
     //add all fluids
     let ounces = 0;
     let percent = 0;
-    let weight = 0;
     let hours = timeSlot;
      result = (ounces * percent * 0.075) / weight - hours * 0.015;
     if (result < 0) {
@@ -98,6 +107,7 @@ const EditPlan = (props) => {
          console.log("You would be considered legally intoxicated in all or most states and would be subject to criminal penalties.");
       if (result < 0.08) console.log( "Your driving ability is becoming impaired.");
     }
+    handleAbv();
   };
 
   return (
@@ -132,75 +142,29 @@ const EditPlan = (props) => {
             </Grid>
           </Grid>
         ))}
-        {/* <Grid item xs={12}>
-            
-          </Grid>
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={1}
-          >
-            
-          </Grid>
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={1}
-          >
-            <IconButton aria-label="delete">
-              <DeleteIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteIcon />
-            </IconButton>
-          </Grid>
-
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={6}
-          >
-            <Paper className={classes.paper}>Bud Light</Paper>
-            <Paper className={classes.paper}>Scofflaw Basement</Paper>
-          </Grid>
         
-        <Link to={'/addDrink/'+plan._id}>
-              <Fab color="primary" aria-label="add">
-                <AddIcon />
-              </Fab>
-            </Link>
-        <Grid item xs={12}>
-          <form className={classes.root} noValidate autoComplete="off">
-            <TextField
-              required
-              id="standard-number"
-              label="Time frame"
-              type="number"
-              helperText="hours"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </form>
-        </Grid>
-        <Button className={classes.button} variant="contained" color="primary">
-          Submit
-        </Button> */}
         <Link to={"/addDrink/" + plan._id}>
           <Fab color="primary" aria-label="add">
             <AddIcon />
           </Fab>
         </Link>
       </div>
+      <Grid item xs={12}>
+        <form className={classes.root} noValidate autoComplete="off">
+          <TextField
+            required
+            id="standard-number"
+            label="Weight"
+            type="number"
+            onChange={handleWeight}
+            value={weight}
+            helperText="lbs"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        </form>
+      </Grid>
       <Grid item xs={12}>
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
@@ -221,9 +185,10 @@ const EditPlan = (props) => {
         <Button onClick={calculateBAC}>Calculate</Button>
       </div>
       <div>
-          <h2>{result}</h2>
+          <h2>{abv}</h2>
       </div>
     </div>
+  
   );
 };
 
