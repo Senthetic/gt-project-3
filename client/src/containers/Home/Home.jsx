@@ -69,8 +69,9 @@ const Home = () => {
     <Link to="/newPlan">
       <Button>Make New Plan</Button>
     </Link>
-    
-    <Button>View User's Plans</Button>
+    <Link to="/listPlans">
+      <Button>View User's Plans</Button>
+    </Link>
     
     {/* <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
     <DrinkSelector variant="outlined"/>
