@@ -31,7 +31,7 @@ const Login = () => {
                         onChange={ev => setPassword(ev.target.value)}
                     />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={4} md={1}>
                     <Button
                         type="submit"
                         variant="contained"
@@ -39,6 +39,16 @@ const Login = () => {
                     >Login</Button>
                     
                 </Grid>
+                <Grid item xs={8} md={11}>
+                <Button
+
+                    type="button"
+                    variant="contained"
+
+                    >Signup</Button>
+                    
+                </Grid>
+                
             </Grid>
             </from>
         </Container>
