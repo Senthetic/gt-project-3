@@ -31,9 +31,12 @@ const ListPlans = () => {
     return (
         <div>
             {plans.map(plan => (
+              <Grid container spacing={3}>
+              
                 <Link to={'editPlan/'+plan._id}>
                     <Paper className={classes.paper}>{plan.name}</Paper>
                 </Link>
+              </Grid>
             ))}
             
         </div>
