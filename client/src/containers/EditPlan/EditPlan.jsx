@@ -15,6 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Api from "../../utils/api"
 import {Link} from "react-router-dom"
+import Snackbar from '@material-ui/core/Snackbar';
 
 import DrinkSelector from "../../components/DrinkSelector";
 
@@ -44,11 +45,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const EditPlan = (props) => {
-  const [plan, setPlan] = React.useState({});
+  const [plan, setPlan] = React.useState({drinks:[]});
+  const [openSnackbar,setOpenSnackbar] = React.useState(true)
   useEffect(()=>{
-    Api.get('/plans/'+props.match.params.planId).then(data => {
-      setPlan(data.data)
-    })
+    getPlan()
     
     console.log(props)
   },[])
@@ -62,22 +62,44 @@ const EditPlan = (props) => {
   const handleChange = (event) => {
     console.log(abv);
   };
+  const getPlan = () => {
+    Api.get('/plans/'+props.match.params.planId).then(data => {
+      setPlan(data.data)
+    })
+  }
+  const deleteDrink = (drinkId) =>{
+    Api.delete(`/plans/${plan._id}/drink/${drinkId}`).then(getPlan)
+  }
 
   return (
     <>
+      
       <div className={classes.root}>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <form className={classes.root} noValidate autoComplete="off">
-              <TextField
-                id="outlined-basic"
-                label="Edit Plan Name"
-                variant="outlined"
-                defaultValue="loading..."
-                value={plan.name}
-                onChange={ev => setPlan({...plan,name: ev.target.value})}
-              />
-            </form>
+        <form className={classes.root} noValidate autoComplete="off">
+          <TextField
+            id="outlined-basic"
+            label="Edit Plan Name"
+            variant="outlined"
+            defaultValue="loading..."
+            value={plan.name}
+            onChange={ev => setPlan({...plan,name: ev.target.value})}
+          />
+        </form>
+        
+          {plan.drinks.map(drink => (
+            <Grid container spacing={3}>
+              <Grid item xs="3">
+                <IconButton aria-label="delete" onClick={() => deleteDrink(drink._id)}>
+                  <DeleteIcon />
+                </IconButton>
+              </Grid>
+              <Grid item xs="9">
+                <Paper className={classes.paper}>{drink.name} ({drink.alcoholPercentage}%)</Paper>
+              </Grid>
+            </Grid>
+          ))}
+          {/* <Grid item xs={12}>
+            
           </Grid>
           <Grid
             container
@@ -87,11 +109,7 @@ const EditPlan = (props) => {
             item
             xs={1}
           >
-            <Link to={'/addDrink/'+plan._id}>
-              <Fab color="primary" aria-label="add">
-                <AddIcon />
-              </Fab>
-            </Link>
+            
           </Grid>
           <Grid
             container
@@ -120,7 +138,12 @@ const EditPlan = (props) => {
             <Paper className={classes.paper}>Bud Light</Paper>
             <Paper className={classes.paper}>Scofflaw Basement</Paper>
           </Grid>
-        </Grid>
+        
+        <Link to={'/addDrink/'+plan._id}>
+              <Fab color="primary" aria-label="add">
+                <AddIcon />
+              </Fab>
+            </Link>
         <Grid item xs={12}>
           <form className={classes.root} noValidate autoComplete="off">
             <TextField
@@ -137,7 +160,12 @@ const EditPlan = (props) => {
         </Grid>
         <Button className={classes.button} variant="contained" color="primary">
           Submit
-        </Button>
+        </Button> */}
+        <Link to={'/addDrink/'+plan._id}>
+          <Fab color="primary" aria-label="add">
+            <AddIcon />
+          </Fab>
+        </Link>
       </div>
     </>
   );
