@@ -85,7 +85,6 @@ const EditPlan = (props) => {
   const calculateBAC = () => {
     //add all fluids
     let ounces = 0;
-    //
     let percent = 0;
     let weight = 0;
     let hours = timeSlot;
