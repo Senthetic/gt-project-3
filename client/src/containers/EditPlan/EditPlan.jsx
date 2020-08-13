@@ -63,13 +63,14 @@ const EditPlan = (props) => {
   }, []);
   const classes = useStyles();
   const [abv, setAbv] = React.useState(0);
+  const [bac, setBac] = React.useState(0);
   // const [bac, setBac] = React.useState('');
   // const [ounces, setOunces] = React.useState('');
   // const [weight, setWeight] = React.useState('');
   // const [hours, setHours] = React.useState('');
 
-  const handleAbv = (event) => {
-    setAbv(result);
+  const handleBac = (event) => {
+    setBac(result);
     console.log(abv);
   };
   const getPlan = () => {
@@ -107,7 +108,7 @@ const EditPlan = (props) => {
          console.log("You would be considered legally intoxicated in all or most states and would be subject to criminal penalties.");
       if (result < 0.08) console.log( "Your driving ability is becoming impaired.");
     }
-    handleAbv();
+    handleBac();
   };
 
   return (
@@ -185,7 +186,7 @@ const EditPlan = (props) => {
         <Button onClick={calculateBAC}>Calculate</Button>
       </div>
       <div>
-          <h2>{abv}</h2>
+          <h2>{bac}</h2>
       </div>
     </div>
   
