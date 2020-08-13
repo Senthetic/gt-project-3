@@ -73,7 +73,7 @@ const Home = () => {
       <Button>View User's Plans</Button>
     </Link>
     
-    {/* <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
+    <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
     <DrinkSelector variant="outlined"/>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
@@ -153,7 +153,7 @@ const Home = () => {
       </Fab>
       <Fab color="secondary" aria-label="edit">
         <EditIcon />
-      </Fab> */}
+      </Fab>
     </>
   );
 };
