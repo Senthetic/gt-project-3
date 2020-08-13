@@ -13,11 +13,13 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Api from "../../utils/api"
-import {Link} from "react-router-dom"
-import Snackbar from '@material-ui/core/Snackbar';
+import Api from "../../utils/api";
+import { Link } from "react-router-dom";
+import Snackbar from "@material-ui/core/Snackbar";
 
 import DrinkSelector from "../../components/DrinkSelector";
+
+let result = 0;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,14 +46,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 const EditPlan = (props) => {
-  const [plan, setPlan] = React.useState({drinks:[]});
-  const [openSnackbar,setOpenSnackbar] = React.useState(true)
-  useEffect(()=>{
-    getPlan()
-    
-    console.log(props)
-  },[])
+  const [plan, setPlan] = React.useState({ drinks: [] });
+  const [timeSlot, setTimeSlot] = React.useState(0);
+  const [openSnackbar, setOpenSnackbar] = React.useState(true);
+  useEffect(() => {
+    getPlan();
+
+    console.log(props);
+  }, []);
   const classes = useStyles();
   const [abv, setAbv] = React.useState("");
   // const [bac, setBac] = React.useState('');
@@ -63,16 +68,41 @@ const EditPlan = (props) => {
     console.log(abv);
   };
   const getPlan = () => {
-    Api.get('/plans/'+props.match.params.planId).then(data => {
-      setPlan(data.data)
-    })
-  }
-  const deleteDrink = (drinkId) =>{
-    Api.delete(`/plans/${plan._id}/drink/${drinkId}`).then(getPlan)
-  }
+    Api.get("/plans/" + props.match.params.planId).then((data) => {
+      setPlan(data.data);
+    });
+  };
+  const deleteDrink = (drinkId) => {
+    Api.delete(`/plans/${plan._id}/drink/${drinkId}`).then(getPlan);
+  };
+
+  const handleTime = (event) => {
+    console.log(event.target.value);
+
+    setTimeSlot(event.value);
+  };
+  //added boilerplate calculator
+  const calculateBAC = () => {
+    //add all fluids
+    let ounces = 0;
+    //
+    let percent = 0;
+    let weight = 0;
+    let hours = timeSlot;
+     result = (ounces * percent * 0.075) / weight - hours * 0.015;
+    if (result < 0) {
+        console.log("You are at the only safe driving limit and are not legally intoxicated.");
+      console.log( "-- neglible amount --");
+    } else {
+      if (result == "NaN") console.log("Please try again.");
+      if (result > 0.08)
+         console.log("You would be considered legally intoxicated in all or most states and would be subject to criminal penalties.");
+      if (result < 0.08) console.log( "Your driving ability is becoming impaired.");
+    }
+  };
 
   return (
-    <>
+    <div>
       
       <div className={classes.root}>
         <form className={classes.root} noValidate autoComplete="off">
@@ -82,23 +112,28 @@ const EditPlan = (props) => {
             variant="outlined"
             defaultValue="loading..."
             value={plan.name}
-            onChange={ev => setPlan({...plan,name: ev.target.value})}
+            onChange={(ev) => setPlan({ ...plan, name: ev.target.value })}
           />
         </form>
-        
-          {plan.drinks.map(drink => (
-            <Grid container spacing={3}>
-              <Grid item xs="3">
-                <IconButton aria-label="delete" onClick={() => deleteDrink(drink._id)}>
-                  <DeleteIcon />
-                </IconButton>
-              </Grid>
-              <Grid item xs="9">
-                <Paper className={classes.paper}>{drink.name} ({drink.alcoholPercentage}%)</Paper>
-              </Grid>
+
+        {plan.drinks.map((drink) => (
+          <Grid container spacing={3}>
+            <Grid item xs="3">
+              <IconButton
+                aria-label="delete"
+                onClick={() => deleteDrink(drink._id)}
+              >
+                <DeleteIcon />
+              </IconButton>
             </Grid>
-          ))}
-          {/* <Grid item xs={12}>
+            <Grid item xs="9">
+              <Paper className={classes.paper}>
+                {drink.name} ({drink.alcoholPercentage}%)
+              </Paper>
+            </Grid>
+          </Grid>
+        ))}
+        {/* <Grid item xs={12}>
             
           </Grid>
           <Grid
@@ -161,13 +196,35 @@ const EditPlan = (props) => {
         <Button className={classes.button} variant="contained" color="primary">
           Submit
         </Button> */}
-        <Link to={'/addDrink/'+plan._id}>
+        <Link to={"/addDrink/" + plan._id}>
           <Fab color="primary" aria-label="add">
             <AddIcon />
           </Fab>
         </Link>
       </div>
-    </>
+      <Grid item xs={12}>
+        <form className={classes.root} noValidate autoComplete="off">
+          <TextField
+            required
+            id="standard-number"
+            label="Time frame"
+            type="number"
+            onChange={handleTime}
+            value={timeSlot}
+            helperText="hours"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        </form>
+      </Grid>
+      <div>
+        <Button onClick={calculateBAC}>Calculate</Button>
+      </div>
+      <div>
+          <h2>{result}</h2>
+      </div>
+    </div>
   );
 };
 

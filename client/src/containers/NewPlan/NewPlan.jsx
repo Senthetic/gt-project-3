@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -13,6 +14,8 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Api from "../../utils/api"
 import {useHistory} from 'react-router-dom'
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import DrinkSelector from "../../components/DrinkSelector";
 
@@ -81,9 +84,12 @@ const NewPlan = () => {
             item
             xs={1}
           >
+            <Link to="/listPlans">
             <Fab color="primary" aria-label="add" onClick={createPlane}>
               <AddIcon />
             </Fab>
+    </Link>
+            
           </Grid>
           <Grid
             container
@@ -94,12 +100,12 @@ const NewPlan = () => {
             xs={1}
           >
             
-            <Fab color="secondary" aria-label="add">
-              <AddIcon />
-            </Fab>
-            <Fab color="secondary" aria-label="add">
-              <AddIcon />
-            </Fab>
+            <IconButton aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
+            <IconButton aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
           </Grid>
 
           <Grid
