@@ -16,6 +16,8 @@ const Login = () => {
         console.log('I cannot make a call, as there is no backend route or auth')
     }
     return (
+        <div>
+            <Drawer></Drawer>
         <Container maxwidth="sm">
             <from onSubmit={doLogin}>    
             <Grid container spacing={3}>
@@ -57,6 +59,7 @@ const Login = () => {
             </Grid>
             </from>
         </Container>
+        </div>
     );
 };
 

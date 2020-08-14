@@ -77,6 +77,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
+};
+
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
@@ -130,12 +134,41 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {['Make New Plans', 'View Plans', 'Home', 'Log-In', 'Sign-Up'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button>
+              <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
+              <ListItemText primary="Home" />
+              <ListItemLink href="/Home"></ListItemLink>
             </ListItem>
-          ))}
+            <ListItem button>
+              <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
+              <ListItemText primary="New Plan" />
+              <ListItemLink href="/NewPlan"></ListItemLink>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
+              <ListItemText primary="Add Drink" />
+              <ListItemLink href="/AddDrink/:planId"></ListItemLink>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
+              <ListItemText primary="List Plans" />
+              <ListItemLink href="/ListPlans"></ListItemLink>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
+              <ListItemText primary="Edit Plans" />
+              <ListItemLink href="/EditPlan/:planId"></ListItemLink>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
+              <ListItemText primary="Log-In" />
+              <ListItemLink href="/Login"></ListItemLink>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
+              <ListItemText primary="Sign-Up" />
+              <ListItemLink href="/Signup"></ListItemLink>
+            </ListItem>
         </List>
         </Drawer>
     </div>
