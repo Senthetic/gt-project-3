@@ -57,25 +57,27 @@ const NewPlan = () => {
   const handleChange = (event) => {
     console.log(abv);
   };
-  const createPlan = () => {
-    Api.post("/plans", { name: planName }).then((plan) =>
-      history.push("/editPlan/" + plan.data._id)
-    );
-  };
+  const createPlan = (ev)=>{
+    ev.preventDefault();
+    Api.post('/plans',{name:planName})
+    .then(plan => history.push('/editPlan/'+plan.data._id))
+  }
 
   return (
     <>
       <div className={classes.root}>
         <Grid container spacing={3}>
+        <form className={classes.root} autoComplete="off" onSubmit={createPlan}>
           <Grid item xs={12}>
-            <form className={classes.root} noValidate autoComplete="off">
+            
               <TextField
                 id="outlined-basic"
+                required
                 label="Plan Name"
                 variant="outlined"
                 onChange={(ev) => setPlanName(ev.target.value)}
               />
-            </form>
+            
           </Grid>
           <Grid
             container
@@ -85,12 +87,13 @@ const NewPlan = () => {
             item
             xs={1}
           >
-            <Link to="/listPlans">
-              <Fab color="primary" aria-label="add">
-                <AddIcon />
-              </Fab>
-            </Link>
+            
+            <Fab type="submit" color="primary" aria-label="add" >
+              <AddIcon />
+            </Fab>
+            
           </Grid>
+          </form>
           <Grid
             container
             direction="column"

@@ -98,7 +98,7 @@ const EditPlan = (props) => {
     //add all fluids
     let ounces = 32;
     //add all % then divide by # of drinks
-    let percent = drink.alcoholPercentage;
+    let percent = 5;
     let hours = timeSlot;
      result = (ounces * percent * 0.075) / weight - hours * 0.015;
     if (result < 0) {
