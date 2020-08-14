@@ -20,6 +20,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import DrinkSelector from "../../components/DrinkSelector";
 
 let result = 0;
+let drinkAbv = 0;
 let ounces = 0;
 let percent = 0;
 let drink = 0;
@@ -70,10 +71,19 @@ const EditPlan = (props) => {
   // const [weight, setWeight] = React.useState('');
   // const [hours, setHours] = React.useState('');
 
+
+
   const handleBac = (event) => {
     setBac(result.toFixed(3));
     console.log(bac);
   };
+//,handleAbv(drink.alcoholPercentage) need to do this somewhere
+  const handleAbv = (percentage) => {
+    drinkAbv = percentage;
+    console.log("percentage: ", percentage);
+    setAbv(percentage);
+  }
+
   const getPlan = () => {
     Api.get("/plans/" + props.match.params.planId).then((data) => {
       setPlan(data.data);
@@ -98,7 +108,7 @@ const EditPlan = (props) => {
     //add all fluids
     let ounces = 32;
     //add all % then divide by # of drinks
-    let percent = 5;
+    let percent = abv;
     let hours = timeSlot;
      result = (ounces * percent * 0.075) / weight - hours * 0.015;
     if (result < 0) {
@@ -129,6 +139,8 @@ const EditPlan = (props) => {
         </form>
 
         {plan.drinks.map((drink) => (
+
+
           <Grid container spacing={3}>
             <Grid item xs="3">
               <IconButton
@@ -144,6 +156,7 @@ const EditPlan = (props) => {
               </Paper>
             </Grid>
           </Grid>
+          
         ))}
         
         <Link to={"/addDrink/" + plan._id}>
