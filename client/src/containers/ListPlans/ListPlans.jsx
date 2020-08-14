@@ -6,6 +6,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Drawer from "../../components/Drawer";
+import Footer from "../../components/Footer";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,7 +58,7 @@ const ListPlans = () => {
                 
               </Grid>
             ))}
-            
+            <Footer></Footer>
         </div>
     );
 };

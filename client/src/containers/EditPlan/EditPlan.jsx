@@ -19,6 +19,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 
 import DrinkSelector from "../../components/DrinkSelector";
 import Drawer from "../../components/Drawer";
+import Footer from "../../components/Footer";
 
 let result = 0;
 let ounces = 0;
@@ -190,6 +191,7 @@ const EditPlan = (props) => {
       <div>
           <h2>{bac}</h2>
       </div>
+      <Footer></Footer>
     </div>
   
   );

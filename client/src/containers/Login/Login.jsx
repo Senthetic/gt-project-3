@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 import Drawer from "../../components/Drawer";
+import Footer from "../../components/Footer";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -59,6 +60,7 @@ const Login = () => {
             </Grid>
             </from>
         </Container>
+        <Footer></Footer>
         </div>
     );
 };

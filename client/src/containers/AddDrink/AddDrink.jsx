@@ -11,6 +11,7 @@ import { useHistory } from 'react-router-dom';
 import Api from "../../utils/api";
 import Drawer from "../../components/Drawer";
 import {Link} from 'react-router-dom';
+import Footer from "../../components/Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -91,6 +92,7 @@ const AddDrink = ({ match }) => {
           Submit
         </Button>
       </FormControl>
+      <Footer></Footer>
     </div>
   );
 
