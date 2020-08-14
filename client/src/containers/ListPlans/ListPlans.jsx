@@ -5,6 +5,8 @@ import {Paper, Grid, IconButton} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
 
+import Drawer from "../../components/Drawer";
+
 const useStyles = makeStyles((theme) => ({
     root: {
       "& .MuiTextField-root": {
@@ -39,6 +41,7 @@ const ListPlans = () => {
 
     return (
         <div>
+          <Drawer></Drawer>
             {plans.map(plan => (
               <Grid container spacing={3} key={plan._id}>  
                 <Grid item xs={3}>

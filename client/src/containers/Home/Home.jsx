@@ -10,8 +10,9 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 
-import DrinkSelector from "../../components/DrinkSelector"
-import {Link} from 'react-router-dom'
+import DrinkSelector from "../../components/DrinkSelector";
+import {Link} from 'react-router-dom';
+import Drawer from "../../components/Drawer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,6 +66,7 @@ const Home = () => {
 
   return (
     <>
+    <Drawer></Drawer>
     <h1>Thirsty?</h1>
     <Link to="/newPlan">
       <Button>Make New Plan</Button>
