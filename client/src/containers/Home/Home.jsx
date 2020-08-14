@@ -14,6 +14,7 @@ import DrinkSelector from "../../components/DrinkSelector";
 import {Link} from 'react-router-dom';
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
+import SubmitButton from "../../components/SubmitButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -147,9 +148,7 @@ const Home = () => {
             shrink: true,
           }}
         />
-        <Button className={classes.button} variant="contained" color="primary">
-          Submit
-        </Button>
+       <SubmitButton></SubmitButton>
       </form>
       <Fab color="primary" aria-label="add">
         <AddIcon />

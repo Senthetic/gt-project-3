@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
+import SubmitButton from "../../components/SubmitButton";
 
 const Signup = () => {
     const [user,setUser] = useState({});
@@ -62,11 +63,7 @@ const Signup = () => {
                     />
                 </Grid>
                 <Grid item xs={4} md={1}>
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                    >Signup</Button>
+                    <SubmitButton></SubmitButton>
                     
                 </Grid>
                 

@@ -17,6 +17,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import DrinkSelector from "../../components/DrinkSelector";
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
+import SubmitButton from "../../components/SubmitButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -124,9 +125,7 @@ const ViewPlans = () => {
             />
           </form>
         </Grid>
-        <Button className={classes.button} variant="contained" color="primary">
-          Submit
-        </Button>
+        <SubmitButton></SubmitButton>
       </div>
       <Footer></Footer>
     </>
