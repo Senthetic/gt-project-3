@@ -19,6 +19,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 import DrinkSelector from "../../components/DrinkSelector";
 import Drawer from "../../components/Drawer";
+import Footer from "../../components/Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -143,6 +144,7 @@ const NewPlan = () => {
           Submit
         </Button>
       </div>
+      <Footer></Footer>
     </>
   );
 };

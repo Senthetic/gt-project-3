@@ -13,6 +13,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import DrinkSelector from "../../components/DrinkSelector";
 import {Link} from 'react-router-dom';
 import Drawer from "../../components/Drawer";
+import Footer from "../../components/Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -156,6 +157,7 @@ const Home = () => {
       <Fab color="secondary" aria-label="edit">
         <EditIcon />
       </Fab>
+      <Footer></Footer>
     </>
   );
 };
