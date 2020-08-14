@@ -9,6 +9,7 @@ import ListPlans from "./containers/ListPlans/ListPlans"
 import EditPlan from "./containers/EditPlan/EditPlan";
 import AddDrink from "./containers/AddDrink/AddDrink";
 import Login from "./containers/Login/Login";
+import Signup from "./containers/Signup/Signup";
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/ListPlans" component={ListPlans} />
         <Route exact path="/EditPlan/:planId" component={EditPlan} />
         <Route exact path="/Login" component={Login} />
+        <Route exact path="/Signup" component={Signup} />
         <Route component={Home} />
       </Switch>
     </Router>

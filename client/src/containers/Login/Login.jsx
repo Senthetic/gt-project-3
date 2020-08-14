@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -40,13 +41,14 @@ const Login = () => {
                     
                 </Grid>
                 <Grid item xs={8} md={11}>
-                <Button
+                    <Link to="/signup">
+                        <Button
 
-                    type="button"
-                    variant="contained"
+                        type="button"
+                        variant="contained"
 
-                    >Signup</Button>
-                    
+                        >Signup</Button>
+                    </Link>
                 </Grid>
                 
             </Grid>
