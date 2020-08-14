@@ -22,6 +22,7 @@ import DrinkSelector from "../../components/DrinkSelector";
 let result = 0;
 let ounces = 0;
 let percent = 0;
+let drink = 0;
 
 
 const useStyles = makeStyles((theme) => ({
@@ -70,8 +71,8 @@ const EditPlan = (props) => {
   // const [hours, setHours] = React.useState('');
 
   const handleBac = (event) => {
-    setBac(result);
-    console.log(abv);
+    setBac(result.toFixed(3));
+    console.log(bac);
   };
   const getPlan = () => {
     Api.get("/plans/" + props.match.params.planId).then((data) => {
@@ -95,8 +96,9 @@ const EditPlan = (props) => {
   //added boilerplate calculator
   const calculateBAC = () => {
     //add all fluids
-    let ounces = 0;
-    let percent = 0;
+    let ounces = 32;
+    //add all % then divide by # of drinks
+    let percent = drink.alcoholPercentage;
     let hours = timeSlot;
      result = (ounces * percent * 0.075) / weight - hours * 0.015;
     if (result < 0) {

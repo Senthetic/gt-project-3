@@ -12,8 +12,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Api from "../../utils/api"
-import {useHistory} from 'react-router-dom'
+import Api from "../../utils/api";
+import { useHistory } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -57,10 +57,11 @@ const NewPlan = () => {
   const handleChange = (event) => {
     console.log(abv);
   };
-  const createPlane = ()=>{
-    Api.post('/plans',{name:planName})
-    .then(plan => history.push('/editPlan/'+plan.data._id))
-  }
+  const createPlan = () => {
+    Api.post("/plans", { name: planName }).then((plan) =>
+      history.push("/editPlan/" + plan.data._id)
+    );
+  };
 
   return (
     <>
@@ -72,7 +73,7 @@ const NewPlan = () => {
                 id="outlined-basic"
                 label="Plan Name"
                 variant="outlined"
-                onChange={ev => setPlanName(ev.target.value)}
+                onChange={(ev) => setPlanName(ev.target.value)}
               />
             </form>
           </Grid>
@@ -85,11 +86,10 @@ const NewPlan = () => {
             xs={1}
           >
             <Link to="/listPlans">
-            <Fab color="primary" aria-label="add" onClick={createPlane}>
-              <AddIcon />
-            </Fab>
-    </Link>
-            
+              <Fab color="primary" aria-label="add">
+                <AddIcon />
+              </Fab>
+            </Link>
           </Grid>
           <Grid
             container
@@ -99,7 +99,6 @@ const NewPlan = () => {
             item
             xs={1}
           >
-            
             <IconButton aria-label="delete">
               <DeleteIcon />
             </IconButton>
@@ -121,20 +120,25 @@ const NewPlan = () => {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-            <form className={classes.root} noValidate autoComplete="off">
+          <form className={classes.root} noValidate autoComplete="off">
             <TextField
-            required
-            id="standard-number"
-            label="Time frame"
-            type="number"
-            helperText="hours"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-            </form>
-          </Grid>
-          <Button className={classes.button} variant="contained" color="primary">
+              required
+              id="standard-number"
+              label="Time frame"
+              type="number"
+              helperText="hours"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </form>
+        </Grid>
+        <Button
+          className={classes.button}
+          variant="contained"
+          onClick={createPlan}
+          color="primary"
+        >
           Submit
         </Button>
       </div>
