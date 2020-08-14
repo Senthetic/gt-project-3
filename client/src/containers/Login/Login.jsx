@@ -5,6 +5,10 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+
+import Drawer from "../../components/Drawer";
+import Footer from "../../components/Footer";
+
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -13,6 +17,8 @@ const Login = () => {
         console.log('I cannot make a call, as there is no backend route or auth')
     }
     return (
+        <div>
+            <Drawer></Drawer>
         <Container maxwidth="sm">
             <from onSubmit={doLogin}>    
             <Grid container spacing={3}>
@@ -54,6 +60,8 @@ const Login = () => {
             </Grid>
             </from>
         </Container>
+        <Footer></Footer>
+        </div>
     );
 };
 

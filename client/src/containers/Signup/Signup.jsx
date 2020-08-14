@@ -6,12 +6,17 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import Drawer from "../../components/Drawer";
+import Footer from "../../components/Footer";
+
 const Signup = () => {
     const [user,setUser] = useState({});
     const doSignup = () => {
 
     }
     return (
+        <div>
+            <Drawer></Drawer>
         <Container maxwidth="sm">
             <from onSubmit={doSignup}>    
             <Grid container spacing={3}>
@@ -69,6 +74,8 @@ const Signup = () => {
             </Grid>
             </from>
         </Container>
+        <Footer></Footer>
+        </div>
     );
 };
 
