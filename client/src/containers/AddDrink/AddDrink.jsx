@@ -6,6 +6,9 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+import Drawer from '../../components/Drawer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,45 +39,48 @@ const AddDrink = () => {
   };
 
   return (
+    <Router>
+    <Drawer></Drawer>
     <div>
       <h1>Blackout Preventer</h1>
-  
-    <FormControl className={classes.formControl}>
-      <InputLabel id="demo-simple-select-label">Type</InputLabel>
-      <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={""}
-        onChange={handleChange}
-      >
-        <MenuItem value={5}>Beer</MenuItem>
-        <MenuItem value={12}>Wine</MenuItem>
-        <MenuItem value={40}>Liquor</MenuItem>
-      </Select>
-      <TextField
-        required
-        id="outlined-basic"
-        label="Name of drink"
-        type="string"
-        helperText="ex: Bud Light"
-      />
-      <TextField
+      </div>
+      <div>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-label">Type</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={""}
+          onChange={handleChange}
+        >
+          <MenuItem value={5}>Beer</MenuItem>
+          <MenuItem value={12}>Wine</MenuItem>
+          <MenuItem value={40}>Liquor</MenuItem>
+        </Select>
+        <TextField
+          required
+          id="outlined-basic"
+          label="Name of drink"
+          type="string"
+          helperText="ex: Bud Light"
+        />
+        <TextField
           required
           id="standard-number"
           label="Volume"
           type="number"
           helperText="oz"
-          //question multiple onChanges? in order to keep updating state onChange={handleChange}
           InputLabelProps={{
             shrink: true,
           }}
         />
-        <Button className={classes.button} variant="contained" color="primary">
-          Submit
-        </Button>
-    </FormControl>
+      </FormControl>
     </div>
-    );
+    <div>
+      <Link to="/">Home</Link>
+    </div>
+    </Router>
+  );
 
 };
 export default AddDrink;
