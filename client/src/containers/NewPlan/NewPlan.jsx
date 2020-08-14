@@ -18,6 +18,7 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 import DrinkSelector from "../../components/DrinkSelector";
+import Drawer from "../../components/Drawer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,6 +66,7 @@ const NewPlan = () => {
 
   return (
     <>
+    <Drawer></Drawer>
       <div className={classes.root}>
         <Grid container spacing={3}>
         <form className={classes.root} autoComplete="off" onSubmit={createPlan}>
