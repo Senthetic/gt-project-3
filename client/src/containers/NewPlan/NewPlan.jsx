@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -11,6 +12,10 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import Api from "../../utils/api"
+import {useHistory} from 'react-router-dom'
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import DrinkSelector from "../../components/DrinkSelector";
 
@@ -40,7 +45,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NewPlan = () => {
+  const history = useHistory();
   const classes = useStyles();
+  const [planName, setPlanName] = React.useState("");
   const [abv, setAbv] = React.useState("");
   // const [bac, setBac] = React.useState('');
   // const [ounces, setOunces] = React.useState('');
@@ -50,31 +57,27 @@ const NewPlan = () => {
   const handleChange = (event) => {
     console.log(abv);
   };
+  const createPlan = (ev)=>{
+    ev.preventDefault();
+    Api.post('/plans',{name:planName})
+    .then(plan => history.push('/editPlan/'+plan.data._id))
+  }
 
   return (
     <>
       <div className={classes.root}>
         <Grid container spacing={3}>
+        <form className={classes.root} autoComplete="off" onSubmit={createPlan}>
           <Grid item xs={12}>
-            <form className={classes.root} noValidate autoComplete="off">
+            
               <TextField
                 id="outlined-basic"
+                required
                 label="Plan Name"
                 variant="outlined"
+                onChange={ev => setPlanName(ev.target.value)}
               />
-            </form>
-          </Grid>
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={1}
-          >
-            <Fab color="primary" aria-label="add">
-              <AddIcon />
-            </Fab>
+            
           </Grid>
           <Grid
             container
@@ -85,12 +88,27 @@ const NewPlan = () => {
             xs={1}
           >
             
-            <Fab color="secondary" aria-label="add">
+            <Fab type="submit" color="primary" aria-label="add" >
               <AddIcon />
             </Fab>
-            <Fab color="secondary" aria-label="add">
-              <AddIcon />
-            </Fab>
+            
+          </Grid>
+          </form>
+          <Grid
+            container
+            direction="column"
+            justify="flex-start"
+            alignItems="flex-start"
+            item
+            xs={1}
+          >
+            
+            <IconButton aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
+            <IconButton aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
           </Grid>
 
           <Grid

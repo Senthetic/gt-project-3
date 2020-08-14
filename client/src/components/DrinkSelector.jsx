@@ -3,7 +3,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from "@material-ui/core/TextField";
 import Api from "../utils/api";
 
-const DrinkSelector = ({ onSelected, variant }) => {
+const DrinkSelector = ({ onSelected, variant, label }) => {
   const [options, setOptions] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [drink, setDrink] = useState({});
@@ -14,19 +14,26 @@ const DrinkSelector = ({ onSelected, variant }) => {
       setLoading(true);
       Api.get("/drinks/search?q=" + searchTerm).then((res) => {
         setOptions(res.data);
-        console.log(options);
+        
         setLoading(false);
       });
     }
   }, [searchTerm]);
+  const select = (event, values) => {
+    
+    // set drink
+    setDrink(values)
+    onSelected(values)
+  }
   return (
     <>
       <Autocomplete
         loading={loading}
         renderInput={(params) => (
-          <TextField {...params} label="Drink selector" variant={variant} />
+          <TextField {...params} label={label || 'Name of drink'} variant={variant} />
         )}
-        getOptionSelected={setDrink}
+        
+        onChange={select}
         getOptionLabel={(option) => option.name}
         options={options}
         onInputChange={(ev, val) => setSearchTerm(val)}

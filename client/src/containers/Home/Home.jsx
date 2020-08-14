@@ -11,6 +11,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import DrinkSelector from "../../components/DrinkSelector"
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,10 +66,14 @@ const Home = () => {
   return (
     <>
     <h1>Thirsty?</h1>
-    <Button>Make New Plan</Button>
-    <Button>View User's Plans</Button>
+    <Link to="/newPlan">
+      <Button>Make New Plan</Button>
+    </Link>
+    <Link to="/listPlans">
+      <Button>View User's Plans</Button>
+    </Link>
     
-    {/* <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
+    <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
     <DrinkSelector variant="outlined"/>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
@@ -148,7 +153,7 @@ const Home = () => {
       </Fab>
       <Fab color="secondary" aria-label="edit">
         <EditIcon />
-      </Fab> */}
+      </Fab>
     </>
   );
 };

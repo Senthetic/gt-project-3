@@ -10,6 +10,14 @@ router.get('/', (req, res) => {
     
 })
 
+router.get('/:planId', (req, res) => {
+    
+    models.Plans.findOne({userId:1, _id:req.params.planId}).then(plans => {
+        res.json(plans)
+    })
+    
+})
+
 router.post('/', (req, res) => {
     models.Plans.create({
         userId:1,
@@ -34,7 +42,7 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-    models.Plans.findOneAndRemove(req.params.id).then(() =>res.json({request:'received'}) )
+    models.Plans.findOneAndRemove({_id:req.params.id}).then(() =>res.json({request:'received'}) )
    
 })
 router.delete('/:id/drink/:drinkId', (req, res) => {
