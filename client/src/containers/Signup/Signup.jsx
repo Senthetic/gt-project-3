@@ -17,7 +17,7 @@ const Signup = () => {
     }
     return (
         <div>
-            <Drawer></Drawer>
+          
         <Container maxwidth="sm">
             <from onSubmit={doSignup}>    
             <Grid container spacing={3}>
@@ -66,11 +66,13 @@ const Signup = () => {
                     <SubmitButton></SubmitButton>
                     
                 </Grid>
-    
+                
+                
             </Grid>
             </from>
         </Container>
-        <Footer></Footer>
+       
+         
         </div>
     );
 };

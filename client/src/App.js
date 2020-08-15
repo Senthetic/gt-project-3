@@ -10,6 +10,8 @@ import EditPlan from "./containers/EditPlan/EditPlan";
 import AddDrink from "./containers/AddDrink/AddDrink";
 import Login from "./containers/Login/Login";
 import Signup from "./containers/Signup/Signup";
+import Drawer from "./components/Drawer";
+import Footer from "./components/Footer"
 
 function App() {
   useEffect(() => {
@@ -24,7 +26,7 @@ function App() {
   }, []);
   return (
     <Router>
-      
+      <Drawer/>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/NewPlan" component={NewPlan} />
@@ -35,6 +37,7 @@ function App() {
         <Route exact path="/Signup" component={Signup} />
         <Route component={Home} />
       </Switch>
+      <Footer/>
     </Router>
   );
 };
