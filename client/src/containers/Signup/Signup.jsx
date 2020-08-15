@@ -64,8 +64,7 @@ const Signup = () => {
                     >Signup</Button>
                     
                 </Grid>
-                
-                
+    
             </Grid>
             </from>
         </Container>
