@@ -10,6 +10,7 @@ const secret = ')*(ylsdhf7';
 
 const app = express();
 
+
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
@@ -41,6 +42,7 @@ app.get("/api/config", (req, res) => {
 app.use('/api/plans', require('./backend/routes/plans'))
 app.use('/api/drinkcategories', require('./backend/routes/drinkCategory'))
 app.use('/api/drinks', require('./backend/routes/drinks'))
+app.use('/api/auth', require('./backend/routes/authentication'))
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
