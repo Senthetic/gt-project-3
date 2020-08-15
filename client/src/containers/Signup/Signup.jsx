@@ -5,21 +5,30 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText'
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
 import SubmitButton from "../../components/SubmitButton";
 
+import Api from "../../utils/api"
+
 const Signup = () => {
     const [user,setUser] = useState({});
-    const doSignup = () => {
-
+    const doSignup = (ev) => {
+        ev.preventDefault();
+        Api.post('/auth/signup',user).then(res => {
+            console.log(user)
+        })
     }
     return (
         <div>
           
-        <Container maxwidth="sm">
-            <from onSubmit={doSignup}>    
+        <Container >
+            <form onSubmit={doSignup}>    
             <Grid container spacing={3}>
             <Grid item xs={12}>
                     <TextField
@@ -47,6 +56,32 @@ const Signup = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
+                        label="Age"
+                        required
+                        type="number"
+                        
+                        onChange={ev => setUser({...user, age:ev.target.value})}
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <FormControl>
+                        <InputLabel id="gender">Gender</InputLabel>
+                        <Select
+                        labelId="gender"
+                        required
+                        value={user.gender}
+                        onChange={ev => setUser({...user, gender:ev.target.value})}
+                    >
+                        <MenuItem value="none" disabled selected>Gender</MenuItem>
+                        <MenuItem value="female">Female</MenuItem>
+                        <MenuItem value="male">Male</MenuItem>
+                    </Select>
+                    <FormHelperText>Please choose biological gender for calculation</FormHelperText>
+                    </FormControl>
+                    
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
                         label="Weight"
                         required
                         type="number"
@@ -63,13 +98,13 @@ const Signup = () => {
                     />
                 </Grid>
                 <Grid item xs={4} md={1}>
-                    <SubmitButton></SubmitButton>
+                    <SubmitButton type="submit"></SubmitButton>
                     
                 </Grid>
                 
                 
             </Grid>
-            </from>
+            </form>
         </Container>
        
          
