@@ -18,6 +18,8 @@ import { Link } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 
 import DrinkSelector from "../../components/DrinkSelector";
+import Drawer from "../../components/Drawer";
+import Footer from "../../components/Footer";
 
 let result = 0;
 let ounces = 0;
@@ -113,6 +115,7 @@ const EditPlan = (props) => {
 
   return (
     <div>
+      <Drawer></Drawer>
       
       <div className={classes.root}>
         <form className={classes.root} noValidate autoComplete="off">
@@ -188,6 +191,7 @@ const EditPlan = (props) => {
       <div>
           <h2>{bac}</h2>
       </div>
+      <Footer></Footer>
     </div>
   
   );

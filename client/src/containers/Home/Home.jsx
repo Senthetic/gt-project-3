@@ -10,8 +10,11 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 
-import DrinkSelector from "../../components/DrinkSelector"
-import {Link} from 'react-router-dom'
+import DrinkSelector from "../../components/DrinkSelector";
+import {Link} from 'react-router-dom';
+import Drawer from "../../components/Drawer";
+import Footer from "../../components/Footer";
+import SubmitButton from "../../components/SubmitButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,6 +68,7 @@ const Home = () => {
 
   return (
     <>
+    <Drawer></Drawer>
     <h1>Thirsty?</h1>
     <Link to="/newPlan">
       <Button>Make New Plan</Button>
@@ -144,9 +148,7 @@ const Home = () => {
             shrink: true,
           }}
         />
-        <Button className={classes.button} variant="contained" color="primary">
-          Submit
-        </Button>
+       <SubmitButton></SubmitButton>
       </form>
       <Fab color="primary" aria-label="add">
         <AddIcon />
@@ -154,6 +156,7 @@ const Home = () => {
       <Fab color="secondary" aria-label="edit">
         <EditIcon />
       </Fab>
+      <Footer></Footer>
     </>
   );
 };
