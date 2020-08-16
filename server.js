@@ -3,12 +3,14 @@ const mongoose = require("mongoose");
 const path = require("path");
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 const secret = ')*(ylsdhf7';
 
 
 
 const app = express();
+app.use(cors())
 
 
 const PORT = process.env.PORT || 3001;

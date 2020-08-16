@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -17,11 +17,13 @@ import SubmitButton from "../../components/SubmitButton";
 import Api from "../../utils/api"
 
 const Signup = () => {
+    const history = useHistory();
     const [user,setUser] = useState({});
     const doSignup = (ev) => {
         ev.preventDefault();
         Api.post('/auth/signup',user).then(res => {
-            console.log(user)
+            localStorage.setItem('token', res.data.token)
+            history.push('/')
         })
     }
     return (

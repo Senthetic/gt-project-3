@@ -9,22 +9,24 @@ router.post('/signup', (req, res) => {
     bcrypt.hash(req.body.password, 10, function(err, hash){
         let newUser = {... req.body, password: hash};
         models.Users.create(newUser).then(userObj => {
-            res.json({id:userObj._id})
+            res.json({token:jwt.sign({...userObj}, secret)})
         })
     })
 })
 router.post('/login', (req, res) => {
-    models.Users.findOne({email:req.email}).then(user => {
+    models.Users.findOne({email:req.body.email}).then(user => {
         // verify passsword
-        bcrypt.compare(req.password, user.password, function(err, result){
+        bcrypt.compare(req.body.password, user.password, function(err, result){
             if(err){
-                res.status(401).exit()
+                console.log('passwords do not match')
+                res.status(401).end()
             }
-            res.json({token:jwt.sign(user, secret)})
+            res.json({token:jwt.sign({...user}, secret)})
         })
 
     }).catch(err => {
-        res.status(401).exit()
+        console.log('user not found')
+        res.status(401).end()
     })
     
 })
