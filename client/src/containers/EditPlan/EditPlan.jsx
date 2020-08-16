@@ -26,6 +26,7 @@ let drinkAbv = 0;
 let ounces = 0;
 let percent = 0;
 let drink = 0;
+let abvResults = 0;
 
 
 const useStyles = makeStyles((theme) => ({
@@ -82,14 +83,22 @@ const EditPlan = (props) => {
 
 
   const handleBac = (event) => {
+    handleAbv();
+    //3 number result
     setBac(result.toFixed(3));
     console.log(bac);
   };
 //,handleAbv(drink.alcoholPercentage) need to do this somewhere
-  const handleAbv = (percentage) => {
-    drinkAbv = percentage;
-    console.log("percentage: ", percentage);
-    setAbv(percentage);
+  const handleAbv = (event) => {
+    
+    console.log("Array of drinks: ",plan.drinks.length);
+    for(let i = 0;i<plan.drinks.length;i++){
+    abvResults +=  plan.drinks[i].alcoholPercentage * plan.drinks[i].size * .075;
+    console.log(abvResults);
+    }
+    // drinkAbv = percentage;
+    // console.log("percentage: ", percentage);
+    // setAbv(percentage);
   }
 
   const getPlan = () => {
@@ -127,7 +136,7 @@ const EditPlan = (props) => {
     //Every time a drink is added, multiply ounces and the bac *.075
     //GAC = total alcohol consumed in grams (total vol of all drinks)^^^ *
     // result = (GAC/(Body Weight grams x r)) * 100
-     result = (ounces * percent * 0.075) / weight - hours * 0.015;
+     result = abvResults / weight - hours * 0.015;
     if (result < 0) {
         console.log("You are at the only safe driving limit and are not legally intoxicated.");
       console.log( "-- neglible amount --");
