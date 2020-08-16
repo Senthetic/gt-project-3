@@ -9,6 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
+import Container from "@material-ui/core/Container"
 
 import DrinkSelector from "../../components/DrinkSelector";
 import {Link} from 'react-router-dom';
@@ -68,16 +69,16 @@ const Home = () => {
 
   return (
     <>
-    <Drawer></Drawer>
-    <h1>Thirsty?</h1>
-    <Link to="/newPlan">
-      <Button>Make New Plan</Button>
-    </Link>
-    <Link to="/listPlans">
-      <Button>View User's Plans</Button>
-    </Link>
-    
-    <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
+    <Container>
+      <h1>Thirsty?</h1>
+      <Link to="/newPlan">
+        <Button>Make New Plan</Button>
+      </Link>
+      <Link to="/listPlans">
+        <Button>View User's Plans</Button>
+      </Link>
+    </Container>
+    {/* <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
     <DrinkSelector variant="outlined"/>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
@@ -156,7 +157,7 @@ const Home = () => {
       <Fab color="secondary" aria-label="edit">
         <EditIcon />
       </Fab>
-      <Footer></Footer>
+      <Footer></Footer> */}
     </>
   );
 };

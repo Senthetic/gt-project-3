@@ -24,13 +24,14 @@ app.use((req, res, next) => {
   let auth = req.header('Authorization');
   if(auth){
     try{
-      const payload = jwt.verify(auth.substring('token '.length), secret);
+      const payload = jwt.verify(auth.substring('Bearer '.length), secret);
       req.user = payload;
       next();
     } catch(e){
       res.status(401).exit();
     }
   } else {
+    req.user = false;
     next();
   }
 })

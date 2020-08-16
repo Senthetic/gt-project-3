@@ -60,7 +60,7 @@ const AddDrink = ({ match }) => {
 
   return (
     <div>
-      <Drawer></Drawer>
+      
       <h1>Blackout Preventer</h1>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label">Type</InputLabel>
@@ -89,9 +89,9 @@ const AddDrink = ({ match }) => {
             shrink: true,
           }}
         />
-        <SubmitButton></SubmitButton>
+        <Button onClick={()=>addDrink()} variant="contained" color="primary">Submit</Button>
       </FormControl>
-      <Footer></Footer>
+      
     </div>
   );
 
