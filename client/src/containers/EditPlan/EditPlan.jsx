@@ -90,9 +90,11 @@ const EditPlan = (props) => {
   };
 //,handleAbv(drink.alcoholPercentage) need to do this somewhere
   const handleAbv = (event) => {
-    
+     abvResults = 0;
     console.log("Array of drinks: ",plan.drinks.length);
+    
     for(let i = 0;i<plan.drinks.length;i++){
+
     abvResults +=  plan.drinks[i].alcoholPercentage * plan.drinks[i].size * .075;
     console.log(abvResults);
     }
@@ -172,7 +174,7 @@ const EditPlan = (props) => {
             <Grid item xs="3">
               <IconButton
                 aria-label="delete"
-                onClick={() => deleteDrink(drink._id)}
+                onClick={() => deleteDrink(drink._id),handleAbv()}
               >
                 <DeleteIcon />
               </IconButton>
