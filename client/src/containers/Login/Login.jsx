@@ -10,6 +10,10 @@ import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
 import SubmitButton from "../../components/SubmitButton";
 
+const divStyle = {
+    margin: '45px',
+  };
+
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -19,7 +23,10 @@ const Login = () => {
     }
     return (
         <div>
+            <div style={divStyle}>
             <Drawer></Drawer>
+            </div>
+            <div>
         <Container maxwidth="sm">
             <from onSubmit={doLogin}>    
             <Grid container spacing={3}>
@@ -57,7 +64,10 @@ const Login = () => {
             </Grid>
             </from>
         </Container>
+        </div>
+        <div style={divStyle}>
         <Footer></Footer>
+        </div>
         </div>
     );
 };

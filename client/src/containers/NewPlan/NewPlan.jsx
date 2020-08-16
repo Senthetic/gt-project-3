@@ -47,6 +47,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const divStyle = {
+  margin: '45px',
+};
+
 const NewPlan = () => {
   const history = useHistory();
   const classes = useStyles();
@@ -68,10 +72,13 @@ const NewPlan = () => {
 
   return (
     <>
+    <div className="divStyle">
     <Drawer></Drawer>
-      <div className={classes.root}>
+    </div>
+      <div className={divStyle}>
         <Grid container spacing={3}>
         <form className={classes.root} autoComplete="off" onSubmit={createPlan}>
+          <div className="divStyle">
           <Grid item xs={12}>
             
               <TextField
@@ -83,6 +90,8 @@ const NewPlan = () => {
               />
             
           </Grid>
+          </div>
+          <div className="divStyle">
           <Grid
             container
             direction="column"
@@ -97,7 +106,9 @@ const NewPlan = () => {
             </Fab>
             
           </Grid>
+          </div>
           </form>
+          <div className="divStyle">
           <Grid
             container
             direction="column"
@@ -106,7 +117,6 @@ const NewPlan = () => {
             item
             xs={1}
           >
-            
             <IconButton aria-label="delete">
               <DeleteIcon />
             </IconButton>
@@ -114,7 +124,8 @@ const NewPlan = () => {
               <DeleteIcon />
             </IconButton>
           </Grid>
-
+          </div>
+<div className="divStyle">
           <Grid
             container
             direction="column"
@@ -126,7 +137,9 @@ const NewPlan = () => {
             <Paper className={classes.paper}>Bud Light</Paper>
             <Paper className={classes.paper}>Scofflaw Basement</Paper>
           </Grid>
+          </div>
         </Grid>
+        <div className="divStyleS">
         <Grid item xs={12}>
             <form className={classes.root} noValidate autoComplete="off">
             <TextField
@@ -141,7 +154,10 @@ const NewPlan = () => {
           />
             </form>
           </Grid>
+          </div>
+          <div className="divStyle">
           <SubmitButton></SubmitButton>
+          </div>
       </div>
       <Footer></Footer>
     </>
