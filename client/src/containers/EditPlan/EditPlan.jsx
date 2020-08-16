@@ -110,6 +110,7 @@ const EditPlan = (props) => {
   };
   const deleteDrink = (drinkId) => {
     Api.delete(`/plans/${plan._id}/drink/${drinkId}`).then(getPlan);
+    handleAbv();
   };
 
   const handleTime = (event) => {
@@ -174,7 +175,7 @@ const EditPlan = (props) => {
             <Grid item xs="3">
               <IconButton
                 aria-label="delete"
-                onClick={() => deleteDrink(drink._id),handleAbv()}
+                onClick={() => deleteDrink(drink._id)}
               >
                 <DeleteIcon />
               </IconButton>
