@@ -20,6 +20,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import DrinkSelector from "../../components/DrinkSelector";
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
+import SubmitButton from "../../components/SubmitButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -128,25 +129,18 @@ const NewPlan = () => {
         <Grid item xs={12}>
           <form className={classes.root} noValidate autoComplete="off">
             <TextField
-              required
-              id="standard-number"
-              label="Time frame"
-              type="number"
-              helperText="hours"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </form>
-        </Grid>
-        <Button
-          className={classes.button}
-          variant="contained"
-          onClick={createPlan}
-          color="primary"
-        >
-          Submit
-        </Button>
+            required
+            id="standard-number"
+            label="Time frame"
+            type="number"
+            helperText="hours"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+            </form>
+          </Grid>
+          <SubmitButton></SubmitButton>
       </div>
       <Footer></Footer>
     </>

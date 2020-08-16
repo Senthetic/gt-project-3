@@ -12,6 +12,7 @@ import Api from "../../utils/api";
 import Drawer from "../../components/Drawer";
 import {Link} from 'react-router-dom';
 import Footer from "../../components/Footer";
+import SubmitButton from "../../components/SubmitButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +43,9 @@ const AddDrink = ({ match }) => {
     size: 12
   })
 
-
+  const calculateDrink = (abv,vol) => {
+    console.log(abv,vol);
+  }
 
 
   const handleDrink = (event) => {
@@ -88,9 +91,9 @@ const AddDrink = ({ match }) => {
             shrink: true,
           }}
         />
-        <Button onClick={addDrink} className={classes.button} variant="contained" color="primary">
-          Submit
-        </Button>
+        <button
+        onClick={ev => calculateDrink(drink.alcoholPercentage,drink.size)}
+        >Submit</button>
       </FormControl>
       <Footer></Footer>
     </div>

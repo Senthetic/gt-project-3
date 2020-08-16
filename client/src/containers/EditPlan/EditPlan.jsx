@@ -29,11 +29,16 @@ let drink = 0;
 
 
 const useStyles = makeStyles((theme) => ({
+  //brian use this on all pages
+  test: {
+    marginTop: "75px",
+  },
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
       width: "25ch",
       flexGrow: 1,
+  
     },
   },
   button: {
@@ -43,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
+  
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
@@ -105,13 +111,22 @@ const EditPlan = (props) => {
 
     setWeight(event.target.value);
   };
-  //added boilerplate calculator
+
+  const calculateABV = () => {
+
+  }
+
   const calculateBAC = () => {
+ 
     //add all fluids
     let ounces = 32;
     //add all % then divide by # of drinks
     let percent = abv;
     let hours = timeSlot;
+    //r = .55 female .68 male
+    //Every time a drink is added, multiply ounces and the bac *.075
+    //GAC = total alcohol consumed in grams (total vol of all drinks)^^^ *
+    // result = (GAC/(Body Weight grams x r)) * 100
      result = (ounces * percent * 0.075) / weight - hours * 0.015;
     if (result < 0) {
         console.log("You are at the only safe driving limit and are not legally intoxicated.");
@@ -129,7 +144,7 @@ const EditPlan = (props) => {
     <div>
       <Drawer></Drawer>
       
-      <div className={classes.root}>
+      <div className={`${classes.root} ${classes.test}`}>
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
             id="outlined-basic"
