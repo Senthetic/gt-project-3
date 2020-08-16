@@ -27,6 +27,8 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
     "drawer": "0.0.2",
     "express": "^4.17.1",
     "if-env": "^1.0.4",

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -9,12 +9,17 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
+import Container from "@material-ui/core/Container"
 
 import DrinkSelector from "../../components/DrinkSelector";
 import {Link} from 'react-router-dom';
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
 import SubmitButton from "../../components/SubmitButton";
+
+import {useHistory} from "react-router-dom";
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
+  const history = useHistory();
   const classes = useStyles();
   const [abv, setAbv] = React.useState("");
   // const [bac, setBac] = React.useState('');
@@ -63,21 +69,28 @@ const Home = () => {
     setAbv(event.target.value);
     console.log(abv);
   };
-
+  useEffect(()=>{
+    console.log(localStorage.token)
+    if(!localStorage.token || localStorage.token === null){
+      console.log('inside')
+      history.push('/login')
+    }
+  },[])
+  
   
 
   return (
     <>
-    <Drawer></Drawer>
-    <h1>Thirsty?</h1>
-    <Link to="/newPlan">
-      <Button>Make New Plan</Button>
-    </Link>
-    <Link to="/listPlans">
-      <Button>View User's Plans</Button>
-    </Link>
-    
-    <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
+    <Container>
+      <h1>Thirsty?</h1>
+      <Link to="/newPlan">
+        <Button>Make New Plan</Button>
+      </Link>
+      <Link to="/listPlans">
+        <Button>View User's Plans</Button>
+      </Link>
+    </Container>
+    {/* <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
     <DrinkSelector variant="outlined"/>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
@@ -156,7 +169,7 @@ const Home = () => {
       <Fab color="secondary" aria-label="edit">
         <EditIcon />
       </Fab>
-      <Footer></Footer>
+      <Footer></Footer> */}
     </>
   );
 };

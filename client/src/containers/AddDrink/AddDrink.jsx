@@ -7,10 +7,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import DrinkSelector from "../../components/DrinkSelector";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import Api from "../../utils/api";
 import Drawer from "../../components/Drawer";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import SubmitButton from "../../components/SubmitButton";
 
@@ -37,30 +37,27 @@ const AddDrink = ({ match }) => {
   const history = useHistory();
   const classes = useStyles();
   const [drink, setDrink] = React.useState({
-    category: '',
-    abv: '0',
-    name: '',
-    size: 12
-  })
+    category: "",
+    abv: "0",
+    name: "",
+    size: 12,
+  });
 
-
-
+  const calculateDrink = (abv, vol) => {
+    console.log(abv, vol);
+  };
 
   const handleDrink = (event) => {
-
-    setDrink({ ...drink, name: event.name, alcoholPercentage: event.abv })
-
+    setDrink({ ...drink, name: event.name, alcoholPercentage: event.abv });
   };
   const addDrink = () => {
-    Api.put('/plans/' + match.params.planId, drink)
-      .then(() => {
-        history.goBack()
-      })
-  }
+    Api.put("/plans/" + match.params.planId, drink).then(() => {
+      history.goBack();
+    });
+  };
 
   return (
     <div>
-      <Drawer></Drawer>
       <h1>Blackout Preventer</h1>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label">Type</InputLabel>
@@ -68,7 +65,7 @@ const AddDrink = ({ match }) => {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={drink.category}
-          onChange={ev => setDrink({ ...drink, category: ev.target.value })}
+          onChange={(ev) => setDrink({ ...drink, category: ev.target.value })}
         >
           <MenuItem value={5}>Beer</MenuItem>
           <MenuItem value={12}>Wine</MenuItem>
@@ -83,17 +80,22 @@ const AddDrink = ({ match }) => {
           type="number"
           helperText="oz"
           value={drink.size}
-          onChange={ev => setDrink({ ...drink, size: ev.target.value })}
+          onChange={(ev) => setDrink({ ...drink, size: ev.target.value })}
           //question multiple onChanges? in order to keep updating state onChange={handleChange}
           InputLabelProps={{
             shrink: true,
           }}
         />
-        <SubmitButton></SubmitButton>
+        <button
+          onClick={(ev) => calculateDrink(drink.alcoholPercentage, drink.size)}
+        >
+          Submit
+        </button>
+        <Button onClick={() => addDrink()} variant="contained" color="primary">
+          Submit
+        </Button>
       </FormControl>
-      <Footer></Footer>
     </div>
   );
-
 };
 export default AddDrink;
