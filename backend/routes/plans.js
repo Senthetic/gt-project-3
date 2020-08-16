@@ -1,32 +1,40 @@
 const router = require('express').Router();
 const models = require('../models')
 
-router.get('/', (req, res) => {
-    console.log('this route!')
+function authenticated(req, res, next){
+    if(!req.user){
+        res.status(401).end();
+    } else {
+        next()
+    }
+}
+
+router.get('/', authenticated, (req, res) => {
+    
     // get my plans from model
-    models.Plans.find({userId:1}).then(plans => {
+    models.Plans.find({userId:req.user._id}).then(plans => {
         res.json(plans)
     })
     
 })
 
-router.get('/:planId', (req, res) => {
+router.get('/:planId', authenticated, (req, res) => {
     
-    models.Plans.findOne({userId:1, _id:req.params.planId}).then(plans => {
+    models.Plans.findOne({userId:req.user._id, _id:req.params.planId}).then(plans => {
         res.json(plans)
     })
     
 })
 
-router.post('/', (req, res) => {
+router.post('/', authenticated, (req, res) => {
     models.Plans.create({
-        userId:1,
+        userId:req.user._id,
         name: req.body.name,
         drinks: []
     }).then(plan => res.json(plan))
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', authenticated, (req, res) => {
     models.Plans.findOne({_id:req.params.id}).then(plan => {
         plan.drinks.push({
             size: req.body.size,
@@ -41,11 +49,11 @@ router.put('/:id', (req, res) => {
     })
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authenticated, (req, res) => {
     models.Plans.findOneAndRemove({_id:req.params.id}).then(() =>res.json({request:'received'}) )
    
 })
-router.delete('/:id/drink/:drinkId', (req, res) => {
+router.delete('/:id/drink/:drinkId', authenticated, (req, res) => {
     models.Plans.findOne({'_id':req.params.id}).then(plan => {
         plan.drinks = plan.drinks.filter(drink => drink._id != req.params.drinkId);
         plan.save();

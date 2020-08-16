@@ -3,12 +3,15 @@ const mongoose = require("mongoose");
 const path = require("path");
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 const secret = ')*(ylsdhf7';
 
 
 
 const app = express();
+app.use(cors())
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -21,13 +24,14 @@ app.use((req, res, next) => {
   let auth = req.header('Authorization');
   if(auth){
     try{
-      const payload = jwt.verify(auth.substring('token '.length), secret);
+      const payload = jwt.verify(auth.substring('Bearer '.length), secret);
       req.user = payload;
       next();
     } catch(e){
       res.status(401).exit();
     }
   } else {
+    req.user = false;
     next();
   }
 })
@@ -41,6 +45,7 @@ app.get("/api/config", (req, res) => {
 app.use('/api/plans', require('./backend/routes/plans'))
 app.use('/api/drinkcategories', require('./backend/routes/drinkCategory'))
 app.use('/api/drinks', require('./backend/routes/drinks'))
+app.use('/api/auth', require('./backend/routes/authentication'))
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));

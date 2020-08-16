@@ -1,27 +1,37 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import Drawer from "../../components/Drawer";
-import Footer from "../../components/Footer";
+import Api from "../../utils/api";
+
 import SubmitButton from "../../components/SubmitButton";
 
 const Login = () => {
+    const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const doLogin = () => {
-        console.log('I cannot make a call, as there is no backend route or auth')
+    const doLogin = (ev) => {
+        ev.preventDefault()
+        Api.post('/auth/login', {
+            email:email,
+            password: password
+        }).then(res => {
+            localStorage.setItem('token', res.data.token);
+            history.push('/')
+        }).catch(e => {
+           alert('wrong credentials') 
+        })
     }
     return (
         <div>
-            <Drawer></Drawer>
+            
         <Container maxwidth="sm">
-            <from onSubmit={doLogin}>    
+            <form onSubmit={doLogin}>    
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <TextField
@@ -40,7 +50,7 @@ const Login = () => {
                     />
                 </Grid>
                 <Grid item xs={4} md={1}>
-                    <SubmitButton></SubmitButton>
+                    <SubmitButton type="submit"></SubmitButton>
                     
                 </Grid>
                 <Grid item xs={8} md={11}>
@@ -55,9 +65,9 @@ const Login = () => {
                 </Grid>
                 
             </Grid>
-            </from>
+            </form>
         </Container>
-        <Footer></Footer>
+        
         </div>
     );
 };
