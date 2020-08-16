@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -16,6 +16,10 @@ import {Link} from 'react-router-dom';
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
 import SubmitButton from "../../components/SubmitButton";
+
+import {useHistory} from "react-router-dom";
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
+  const history = useHistory();
   const classes = useStyles();
   const [abv, setAbv] = React.useState("");
   // const [bac, setBac] = React.useState('');
@@ -64,7 +69,14 @@ const Home = () => {
     setAbv(event.target.value);
     console.log(abv);
   };
-
+  useEffect(()=>{
+    console.log(localStorage.token)
+    if(!localStorage.token || localStorage.token === null){
+      console.log('inside')
+      history.push('/login')
+    }
+  },[])
+  
   
 
   return (

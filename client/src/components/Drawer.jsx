@@ -94,6 +94,10 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
 
   return (
     <div className={classes.root}>
@@ -169,6 +173,11 @@ export default function PersistentDrawerLeft() {
               <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
               <ListItemText primary="Sign-Up" />
               <ListItemLink href="/Signup"></ListItemLink>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
+              <ListItemText primary="Logout" />
+              <ListItemLink onClick={() => logout()}></ListItemLink>
             </ListItem>
         </List>
         </Drawer>

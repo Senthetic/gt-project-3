@@ -14,7 +14,9 @@ import Drawer from "./components/Drawer";
 import Footer from "./components/Footer"
 
 function App() {
+  
   useEffect(() => {
+    
     axios
       .get("/api/config")
       .then((response) => {
