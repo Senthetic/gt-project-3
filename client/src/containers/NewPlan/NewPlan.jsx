@@ -12,8 +12,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Api from "../../utils/api"
-import {useHistory} from 'react-router-dom'
+import Api from "../../utils/api";
+import { useHistory } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -79,7 +79,7 @@ const NewPlan = () => {
                 required
                 label="Plan Name"
                 variant="outlined"
-                onChange={ev => setPlanName(ev.target.value)}
+                onChange={(ev) => setPlanName(ev.target.value)}
               />
             
           </Grid>
@@ -106,7 +106,6 @@ const NewPlan = () => {
             item
             xs={1}
           >
-            
             <IconButton aria-label="delete">
               <DeleteIcon />
             </IconButton>
@@ -128,7 +127,7 @@ const NewPlan = () => {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-            <form className={classes.root} noValidate autoComplete="off">
+          <form className={classes.root} noValidate autoComplete="off">
             <TextField
             required
             id="standard-number"

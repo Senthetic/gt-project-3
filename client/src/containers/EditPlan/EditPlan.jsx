@@ -22,16 +22,24 @@ import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
 
 let result = 0;
+let drinkAbv = 0;
 let ounces = 0;
 let percent = 0;
+let drink = 0;
+let abvResults = 0;
 
 
 const useStyles = makeStyles((theme) => ({
+  //brian use this on all pages
+  test: {
+    marginTop: "75px",
+  },
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
       width: "25ch",
       flexGrow: 1,
+  
     },
   },
   button: {
@@ -41,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
+  
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
@@ -71,10 +80,29 @@ const EditPlan = (props) => {
   // const [weight, setWeight] = React.useState('');
   // const [hours, setHours] = React.useState('');
 
+
+
   const handleBac = (event) => {
-    setBac(result);
-    console.log(abv);
+    handleAbv();
+    //3 number result
+    setBac(result.toFixed(3));
+    console.log(bac);
   };
+//,handleAbv(drink.alcoholPercentage) need to do this somewhere
+  const handleAbv = (event) => {
+     abvResults = 0;
+    console.log("Array of drinks: ",plan.drinks.length);
+    
+    for(let i = 0;i<plan.drinks.length;i++){
+
+    abvResults +=  plan.drinks[i].alcoholPercentage * plan.drinks[i].size * .075;
+    console.log(abvResults);
+    }
+    // drinkAbv = percentage;
+    // console.log("percentage: ", percentage);
+    // setAbv(percentage);
+  }
+
   const getPlan = () => {
     Api.get("/plans/" + props.match.params.planId).then((data) => {
       setPlan(data.data);
@@ -94,13 +122,23 @@ const EditPlan = (props) => {
 
     setWeight(event.target.value);
   };
-  //added boilerplate calculator
+
+  const calculateABV = () => {
+
+  }
+
   const calculateBAC = () => {
+ 
     //add all fluids
-    let ounces = 0;
-    let percent = 0;
+    let ounces = 32;
+    //add all % then divide by # of drinks
+    let percent = abv;
     let hours = timeSlot;
-     result = (ounces * percent * 0.075) / weight - hours * 0.015;
+    //r = .55 female .68 male
+    //Every time a drink is added, multiply ounces and the bac *.075
+    //GAC = total alcohol consumed in grams (total vol of all drinks)^^^ *
+    // result = (GAC/(Body Weight grams x r)) * 100
+     result = abvResults / weight - hours * 0.015;
     if (result < 0) {
         console.log("You are at the only safe driving limit and are not legally intoxicated.");
       console.log( "-- neglible amount --");
@@ -117,7 +155,7 @@ const EditPlan = (props) => {
     <div>
       <Drawer></Drawer>
       
-      <div className={classes.root}>
+      <div className={`${classes.root} ${classes.test}`}>
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
             id="outlined-basic"
@@ -130,11 +168,13 @@ const EditPlan = (props) => {
         </form>
 
         {plan.drinks.map((drink) => (
+
+
           <Grid container spacing={3}>
             <Grid item xs="3">
               <IconButton
                 aria-label="delete"
-                onClick={() => deleteDrink(drink._id)}
+                onClick={() => deleteDrink(drink._id),handleAbv()}
               >
                 <DeleteIcon />
               </IconButton>
@@ -145,6 +185,7 @@ const EditPlan = (props) => {
               </Paper>
             </Grid>
           </Grid>
+          
         ))}
         
         <Link to={"/addDrink/" + plan._id}>
