@@ -84,7 +84,7 @@ const EditPlan = (props) => {
 
 
   const handleBac = (event) => {
-    handleAbv()
+    
     //3 number result
     setBac(result.toFixed(3));
     console.log(bac);
@@ -130,7 +130,8 @@ const EditPlan = (props) => {
   }
 
   const calculateBAC = () => {
-    handleBac();
+   
+    handleAbv();
     //add all fluids
     let ounces = 32;
     
@@ -151,7 +152,7 @@ const EditPlan = (props) => {
          resultMessage ="You would be considered legally intoxicated in all or most states and would be subject to criminal penalties.";
       if (result < 0.08) resultMessage = "Your driving ability is becoming impaired.";
     }
-    //handleBac();
+    handleBac();
   };
 
   return (
