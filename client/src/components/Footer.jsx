@@ -18,7 +18,7 @@ const Footer = () => {
       >
         <div>
           {" "}
-          <h1>
+          {/* <h1>
             Disclaimer: {" "}
           </h1> 
            <p>By accessing or using the Blackout Preventer App or any
@@ -28,7 +28,7 @@ const Footer = () => {
             as a convenience to our app users and are meant to be used for
             informational purposes only. We do not take responsibility for
             decisions taken by the reader based solely on the information
-            provided in this app</p>
+            provided in this app</p> */}
         </div>
         <div className="navbar-brand">
           © 2020 Brian Cook, Jimmy Kazadi, Andrew Collier
