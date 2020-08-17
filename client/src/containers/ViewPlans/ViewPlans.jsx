@@ -1,20 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-import DrinkSelector from "../../components/DrinkSelector";
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
 import SubmitButton from "../../components/SubmitButton";
@@ -46,15 +39,12 @@ const useStyles = makeStyles((theme) => ({
 
 const ViewPlans = () => {
   const classes = useStyles();
-  const [abv, setAbv] = React.useState("");
+  const [abv] = React.useState("");
   // const [bac, setBac] = React.useState('');
   // const [ounces, setOunces] = React.useState('');
   // const [weight, setWeight] = React.useState('');
   // const [hours, setHours] = React.useState('');
 
-  const handleChange = (event) => {
-    console.log(abv);
-  };
 
   return (
     <>

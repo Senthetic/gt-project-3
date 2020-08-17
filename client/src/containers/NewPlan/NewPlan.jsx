@@ -1,23 +1,10 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import EditIcon from "@material-ui/icons/Edit";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Api from "../../utils/api";
 import { useHistory } from "react-router-dom";
-import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
 
-import DrinkSelector from "../../components/DrinkSelector";
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
 import SubmitButton from "../../components/SubmitButton";
@@ -56,15 +43,12 @@ const NewPlan = () => {
   const history = useHistory();
   const classes = useStyles();
   const [planName, setPlanName] = React.useState("");
-  const [abv, setAbv] = React.useState("");
+  const [abv] = React.useState("");
   // const [bac, setBac] = React.useState('');
   // const [ounces, setOunces] = React.useState('');
   // const [weight, setWeight] = React.useState('');
   // const [hours, setHours] = React.useState('');
 
-  const handleChange = (event) => {
-    console.log(abv);
-  };
   const createPlan = (ev) => {
     ev.preventDefault();
     Api.post('/plans', { name: planName })

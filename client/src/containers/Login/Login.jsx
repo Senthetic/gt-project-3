@@ -9,9 +9,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Api from "../../utils/api";
 
-import SubmitButton from "../../components/SubmitButton";
 import Footer from "../../components/Footer";
-import { grey, blue } from '@material-ui/core/colors';
+
 
 const divStyle = {
     margin: '45px',
