@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
-    marginRight:25,
-    marginLeft:25,
-    marginTop:5,
-    paddingTop:5,
-    paddingBottom:5,
-    backgroundColor:'#284B63',
-    borderRadius:10,
+    marginRight: 25,
+    marginLeft: 25,
+    marginTop: 5,
+    paddingTop: 5,
+    paddingBottom: 5,
+    backgroundColor: '#284B63',
+    borderRadius: 10,
     borderWidth: "5px",
     borderColor: "black"
   },
@@ -75,9 +75,20 @@ const AddDrink = ({ match }) => {
       </div>
       <FormControl className={classes.formControl}>
         <div className={classes.divStyle}>
-          <InputLabel id="demo-simple-select-label">Type</InputLabel>
-          </div>
-          <div className={classes.divStyle}> 
+          <TextField
+            id="standard-select-currency"
+            select
+            label="Type"
+            value={drink.category}
+            onChange={(ev) => setDrink({ ...drink, category: ev.target.value })}
+            style={{width: "100%"}}
+            helperText="Choose drink type"
+          >
+            <MenuItem value={5}>Beer</MenuItem>
+            <MenuItem value={12}>Wine</MenuItem>
+            <MenuItem value={40}>Liquor</MenuItem>
+          </TextField>
+          {/* <InputLabel id="demo-simple-select-label">Type</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -87,7 +98,7 @@ const AddDrink = ({ match }) => {
             <MenuItem value={5}>Beer</MenuItem>
             <MenuItem value={12}>Wine</MenuItem>
             <MenuItem value={40}>Liquor</MenuItem>
-          </Select>
+          </Select> */}
         </div>
         <div className={classes.divStyle}>
           <DrinkSelector onSelected={handleDrink} variant="standard" />
@@ -108,9 +119,9 @@ const AddDrink = ({ match }) => {
           />
         </div>
         <div className={classes.divStyle}>
-          <SubmitButton className={classes.button} onClick={() => addDrink()} variant="contained">
+          <Button className={classes.button} onClick={() => addDrink()} variant="contained">
             Submit
-        </SubmitButton>
+        </Button>
         </div>
       </FormControl>
     </div>

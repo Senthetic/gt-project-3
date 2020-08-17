@@ -144,7 +144,7 @@ export default function PersistentDrawerLeft() {
             <ListItem button>
               <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
               <ListItemText primary="Home" />
-              <ListItemLink href="/Home"></ListItemLink>
+              <ListItemLink href="/"></ListItemLink>
             </ListItem>
             <ListItem button>
               <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
