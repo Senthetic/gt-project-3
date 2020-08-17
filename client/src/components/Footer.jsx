@@ -2,7 +2,6 @@ import React from "react";
 
 const Footer = () => {
   const footerStyle = {
-<<<<<<< HEAD
   position: "fixed",
   left: "0",
   bottom: "0",
@@ -10,15 +9,6 @@ const Footer = () => {
   backgroundColor: "#3C6E71",
   color: "white",
   textAlign: "center"
-=======
-    position: "fixed",
-    left: "0",
-    bottom: "0",
-    width: "100%",
-    backgroundColor: "blue",
-    color: "white",
-    textAlign: "center",
->>>>>>> d2d3b8cbf019f979d84c3dbe1fef93fa5ef4b6fe
   };
   return (
     <footer className="container">
