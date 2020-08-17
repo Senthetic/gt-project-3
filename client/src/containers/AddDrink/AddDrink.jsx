@@ -13,6 +13,7 @@ import Drawer from "../../components/Drawer";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import SubmitButton from "../../components/SubmitButton";
+import Disclaimer from "../../components/Disclaimer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,9 +23,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
-    marginRight: 25,
-    marginLeft: 25,
-    marginTop: 5,
     paddingTop: 5,
     paddingBottom: 5,
     backgroundColor: '#284B63',
@@ -78,7 +76,7 @@ const AddDrink = ({ match }) => {
           <TextField
             id="standard-select-currency"
             select
-            label="Type"
+            label="Volume"
             value={drink.category}
             onChange={(ev) => setDrink({ ...drink, category: ev.target.value })}
             style={{width: "100%"}}
@@ -119,11 +117,28 @@ const AddDrink = ({ match }) => {
           />
         </div>
         <div className={classes.divStyle}>
-          <Button className={classes.button} onClick={() => addDrink()} variant="contained">
+          <Button style={{marginRight:25,
+    marginLeft:0,
+    marginTop:5,
+    paddingTop:5,
+    paddingBottom:5,
+    backgroundColor:'#E8EDDF',
+    borderRadius:10,
+    borderWidth: "5px",
+    borderColor: "black"}} onClick={() => addDrink()} variant="contained">
             Submit
         </Button>
         </div>
       </FormControl>
+      <div>
+        <h1 style={{textAlign: "center",
+      display: "inherit"
+      }}>Disclaimer:</h1>
+
+
+        <Disclaimer></Disclaimer>
+      </div>
+    <Footer></Footer>
     </div>
   );
 };

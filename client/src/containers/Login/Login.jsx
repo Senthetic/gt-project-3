@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Api from "../../utils/api";
 
 import Footer from "../../components/Footer";
+import Disclaimer from "../../components/Disclaimer";
 
 
 const divStyle = {
@@ -87,6 +88,13 @@ const Login = () => {
                     </form>
                 </Container>
             </div>
+            <div>
+        <h1 style={{textAlign: "center",
+      }}>Disclaimer:</h1>
+
+
+        <Disclaimer></Disclaimer>
+      </div>
             <div style={divStyle}>
                 <Footer></Footer>
             </div>

@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    color: "#3C6E71"
+    color: "#F5CB5C"
   },
   drawerPaper: {
     width: drawerWidth,
@@ -104,7 +104,7 @@ export default function PersistentDrawerLeft() {
   return (
     <div className={classes.root}>
       <AppBar
-              style={{ backgroundColor: "#3C6E71"}}
+              style={{ backgroundColor: "#F5CB5C"}}
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,

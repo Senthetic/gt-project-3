@@ -11,6 +11,8 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import SubmitButton from "../../components/SubmitButton";
 
 import Api from "../../utils/api"
+import Footer from '../../components/Footer';
+import Disclaimer from "../../components/Disclaimer";
 
 const Signup = () => {
     const history = useHistory();
@@ -20,9 +22,10 @@ const Signup = () => {
         Api.post('/auth/signup',user).then(res => {
             localStorage.setItem('token', res.data.token)
             history.push('/')
-        })
-    }
+        });
+    };
     return (
+        <div>
         <div>
           
         <Container >
@@ -92,7 +95,7 @@ const Signup = () => {
                         label="Height"
                         required
                         type="number"
-                        helperText="inches"
+                        helperText="Inches"
                         onChange={ev => setUser({...user, height:ev.target.value})}
                     />
                 </Grid>
@@ -105,9 +108,16 @@ const Signup = () => {
             </Grid>
             </form>
         </Container>
-       
-         
         </div>
+        <div>
+        <h1 style={{textAlign: "center",
+      }}>Disclaimer:</h1>
+        <Disclaimer></Disclaimer>
+      </div>
+      <div>
+          <Footer></Footer>
+      </div>
+      </div>
     );
 };
 
