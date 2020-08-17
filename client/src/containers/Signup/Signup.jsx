@@ -36,7 +36,7 @@ const Signup = () => {
                         label="Username"
                         type="text"
                         required
-                        onChange={ev => setUser({...user, name:ev.target.value})}
+                        onChange={ev => setUser({...user, userName:ev.target.value})}
                     />
                 </Grid>
                 <Grid item xs={12}>

@@ -5,10 +5,13 @@ import Container from "@material-ui/core/Container"
 
 import {Link} from 'react-router-dom';
 
+<<<<<<< HEAD
 import {useHistory} from "react-router-dom";
 import Disclaimer from "../../components/Disclaimer";
 import Footer from "../../components/Footer";
 
+=======
+>>>>>>> cfaf41376ec4d28131ffd644637426898da77764
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
-  const history = useHistory();
+ 
   const [abv, setAbv] = React.useState("");
   const classes = useStyles;
   // const [bac, setBac] = React.useState('');
@@ -40,13 +43,6 @@ const Home = () => {
   // const [weight, setWeight] = React.useState('');
   // const [hours, setHours] = React.useState('');
 
-  useEffect(()=>{
-    console.log(localStorage.token)
-    if(!localStorage.token || localStorage.token === null){
-      console.log('inside')
-      history.push('/login')
-    }
-  },[])
   
   
 

@@ -163,9 +163,9 @@ const EditPlan = (props) => {
 
   return (
     <div>
-      <Drawer></Drawer>
+   
 
-      <div className={`${classes.root} ${classes.test}`}>
+      <div className={`${classes.root}`}>
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
             id="outlined-basic"
