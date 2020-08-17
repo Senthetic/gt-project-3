@@ -120,8 +120,10 @@ const AddDrink = ({ match }) => {
           <Button style={{marginRight:25,
     marginLeft:0,
     marginTop:5,
-    paddingTop:5,
-    paddingBottom:5,
+    paddingTop:25,
+    paddingLeft:25,
+    paddingRight:25,
+    paddingBottom:25,
     backgroundColor:'#E8EDDF',
     borderRadius:10,
     borderWidth: "5px",
@@ -130,7 +132,7 @@ const AddDrink = ({ match }) => {
         </Button>
         </div>
       </FormControl>
-      <div>
+      <div style={{marginTop: "300px"}}>
         <h1 style={{textAlign: "center",
       display: "inherit"
       }}>Disclaimer:</h1>
