@@ -27,8 +27,7 @@ let ounces = 0;
 let percent = 0;
 let drink = 0;
 let abvResults = 0;
-let resultMessage= "";
-
+let resultMessage = "";
 
 const useStyles = makeStyles((theme) => ({
   //brian use this on all pages
@@ -40,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: "25ch",
       flexGrow: 1,
-  
     },
   },
   button: {
@@ -50,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
-  
+
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
@@ -60,8 +58,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-
-
 
 const EditPlan = (props) => {
   const [plan, setPlan] = React.useState({ drinks: [] });
@@ -81,28 +77,25 @@ const EditPlan = (props) => {
   // const [weight, setWeight] = React.useState('');
   // const [hours, setHours] = React.useState('');
 
-
-
   const handleBac = (event) => {
-    
     //3 number result
     setBac(result.toFixed(3));
     console.log(bac);
   };
-//,handleAbv(drink.alcoholPercentage) need to do this somewhere
+  //,handleAbv(drink.alcoholPercentage) need to do this somewhere
   const handleAbv = (event) => {
-     abvResults = 0;
-    console.log("Array of drinks: ",plan.drinks.length);
-    
-    for(let i = 0;i<plan.drinks.length;i++){
+    abvResults = 0;
+    console.log("Array of drinks: ", plan.drinks.length);
 
-    abvResults +=  plan.drinks[i].alcoholPercentage * plan.drinks[i].size * .075;
-    console.log(abvResults);
+    for (let i = 0; i < plan.drinks.length; i++) {
+      abvResults +=
+        plan.drinks[i].alcoholPercentage * plan.drinks[i].size * 0.075;
+      console.log(abvResults);
     }
     // drinkAbv = percentage;
     // console.log("percentage: ", percentage);
     // setAbv(percentage);
-  }
+  };
 
   const getPlan = () => {
     Api.get("/plans/" + props.match.params.planId).then((data) => {
@@ -125,16 +118,13 @@ const EditPlan = (props) => {
     setWeight(event.target.value);
   };
 
-  const calculateABV = () => {
-
-  }
+  const calculateABV = () => {};
 
   const calculateBAC = () => {
-   
     handleAbv();
     //add all fluids
     let ounces = 32;
-    
+
     //add all % then divide by # of drinks
     let percent = abv;
     let hours = timeSlot;
@@ -142,15 +132,23 @@ const EditPlan = (props) => {
     //Every time a drink is added, multiply ounces and the bac *.075
     //GAC = total alcohol consumed in grams (total vol of all drinks)^^^ *
     // result = (GAC/(Body Weight grams x r)) * 100
-     result = abvResults / weight - hours * 0.015;
+    result = abvResults / weight - timeSlot * 0.015;
     if (result < 0) {
-        resultMessage = "You are at the only safe driving limit and are not legally intoxicated.";
-      console.log( "-- neglible amount --");
+      resultMessage =
+        "You are at the only safe driving limit and are not legally intoxicated.";
+      console.log("-- neglible amount --");
     } else {
       if (result == "NaN") resultMessage = "Please try again.";
-      if (result > 0.08)
-         resultMessage ="You would be considered legally intoxicated in all or most states and would be subject to criminal penalties.";
-      if (result < 0.08) resultMessage = "Your driving ability is becoming impaired.";
+      if (result < 0.03)
+        resultMessage =
+          "You feel mildly relaxed and maybe a little lightheaded. Your inhibitions are slightly loosened, and whatever mood you were in before you started drinking may be mildly intensified";
+      if (result < 0.06)
+        resultMessage =
+          "You feel warm and relaxed. If you're the shy type when you're sober, you lose your feelings of shyness. Your behavior may become exaggerated, making you talk louder or faster or act bolder than usual. Emotions are intensified, so your good moods are better and your bad moods are worse. You may also feel a mild sense of euphoria.";
+      if (result > 0.14)
+        resultMessage =
+          "You would be considered legally intoxicated in all or most states and would be subject to criminal penalties. And Blackouts :)";
+      if (result < 0.14) resultMessage = "Getting close to a blackout!";
     }
     handleBac();
   };
@@ -158,7 +156,7 @@ const EditPlan = (props) => {
   return (
     <div>
       <Drawer></Drawer>
-      
+
       <div className={`${classes.root} ${classes.test}`}>
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
@@ -172,8 +170,6 @@ const EditPlan = (props) => {
         </form>
 
         {plan.drinks.map((drink) => (
-
-
           <Grid container spacing={3}>
             <Grid item xs="3">
               <IconButton
@@ -189,9 +185,8 @@ const EditPlan = (props) => {
               </Paper>
             </Grid>
           </Grid>
-          
         ))}
-        
+
         <Link to={"/addDrink/" + plan._id}>
           <Fab color="primary" aria-label="add">
             <AddIcon />
@@ -234,14 +229,13 @@ const EditPlan = (props) => {
         <Button onClick={calculateBAC}>Calculate</Button>
       </div>
       <div>
-          <h2>{bac}</h2>
+        <h2>{bac}</h2>
       </div>
       <div>
         <h3>{resultMessage}</h3>
       </div>
       <Footer></Footer>
     </div>
-  
   );
 };
 
