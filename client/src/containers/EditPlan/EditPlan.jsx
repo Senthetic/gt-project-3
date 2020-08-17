@@ -27,6 +27,7 @@ let ounces = 0;
 let percent = 0;
 let drink = 0;
 let abvResults = 0;
+let resultMessage= "";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -83,7 +84,7 @@ const EditPlan = (props) => {
 
 
   const handleBac = (event) => {
-    handleAbv();
+    
     //3 number result
     setBac(result.toFixed(3));
     console.log(bac);
@@ -129,9 +130,11 @@ const EditPlan = (props) => {
   }
 
   const calculateBAC = () => {
- 
+   
+    handleAbv();
     //add all fluids
     let ounces = 32;
+    
     //add all % then divide by # of drinks
     let percent = abv;
     let hours = timeSlot;
@@ -141,13 +144,13 @@ const EditPlan = (props) => {
     // result = (GAC/(Body Weight grams x r)) * 100
      result = abvResults / weight - hours * 0.015;
     if (result < 0) {
-        console.log("You are at the only safe driving limit and are not legally intoxicated.");
+        resultMessage = "You are at the only safe driving limit and are not legally intoxicated.";
       console.log( "-- neglible amount --");
     } else {
-      if (result == "NaN") console.log("Please try again.");
+      if (result == "NaN") resultMessage = "Please try again.";
       if (result > 0.08)
-         console.log("You would be considered legally intoxicated in all or most states and would be subject to criminal penalties.");
-      if (result < 0.08) console.log( "Your driving ability is becoming impaired.");
+         resultMessage ="You would be considered legally intoxicated in all or most states and would be subject to criminal penalties.";
+      if (result < 0.08) resultMessage = "Your driving ability is becoming impaired.";
     }
     handleBac();
   };
@@ -232,6 +235,9 @@ const EditPlan = (props) => {
       </div>
       <div>
           <h2>{bac}</h2>
+      </div>
+      <div>
+        <h3>{resultMessage}</h3>
       </div>
       <Footer></Footer>
     </div>
