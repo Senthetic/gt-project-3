@@ -60,20 +60,24 @@ const NewPlan = () => {
   const handleChange = (event) => {
     console.log(abv);
   };
-  const createPlan = (ev)=>{
+  const createPlan = (ev) => {
     ev.preventDefault();
-    Api.post('/plans',{name:planName})
-    .then(plan => history.push('/editPlan/'+plan.data._id))
-  }
+    Api.post("/plans", { name: planName }).then((plan) =>
+      history.push("/editPlan/" + plan.data._id)
+    );
+  };
 
   return (
     <>
-    <Drawer></Drawer>
+      <Drawer></Drawer>
       <div className={classes.root}>
         <Grid container spacing={3}>
-        <form className={classes.root} autoComplete="off" onSubmit={createPlan}>
-          <Grid item xs={12}>
-            
+          <form
+            className={classes.root}
+            autoComplete="off"
+            onSubmit={createPlan}
+          >
+            <Grid item xs={12}>
               <TextField
                 id="outlined-basic"
                 required
@@ -81,66 +85,19 @@ const NewPlan = () => {
                 variant="outlined"
                 onChange={(ev) => setPlanName(ev.target.value)}
               />
-            
-          </Grid>
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={1}
-          >
-            
-            <Fab type="submit" color="primary" aria-label="add" >
-              <AddIcon />
-            </Fab>
-            
-          </Grid>
+            </Grid>
+            <Grid
+              container
+              direction="column"
+              justify="flex-start"
+              alignItems="flex-start"
+              item
+              xs={1}
+            ></Grid>
           </form>
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={1}
-          >
-            <IconButton aria-label="delete">
-              <DeleteIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteIcon />
-            </IconButton>
-          </Grid>
-
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={6}
-          >
-            <Paper className={classes.paper}>Bud Light</Paper>
-            <Paper className={classes.paper}>Scofflaw Basement</Paper>
-          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <form className={classes.root} noValidate autoComplete="off">
-            <TextField
-            required
-            id="standard-number"
-            label="Time frame"
-            type="number"
-            helperText="hours"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-            </form>
-          </Grid>
-          <SubmitButton></SubmitButton>
+
+        <SubmitButton></SubmitButton>
       </div>
       <Footer></Footer>
     </>

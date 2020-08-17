@@ -86,11 +86,7 @@ const AddDrink = ({ match }) => {
             shrink: true,
           }}
         />
-        <button
-          onClick={(ev) => calculateDrink(drink.alcoholPercentage, drink.size)}
-        >
-          Submit
-        </button>
+        
         <Button onClick={() => addDrink()} variant="contained" color="primary">
           Submit
         </Button>
