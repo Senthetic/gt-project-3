@@ -67,6 +67,7 @@ const NewPlan = () => {
   };
   const createPlan = (ev) => {
     ev.preventDefault();
+<<<<<<< HEAD
     Api.post('/plans', { name: planName })
       .then(plan => history.push('/editPlan/' + plan.data._id))
   }
@@ -132,6 +133,24 @@ const NewPlan = () => {
         <div className={`${classes.root} ${classes.test}`}>
           <Grid item xs={12}>
             <form className={classes.root} noValidate autoComplete="off">
+=======
+    Api.post("/plans", { name: planName }).then((plan) =>
+      history.push("/editPlan/" + plan.data._id)
+    );
+  };
+
+  return (
+    <>
+      <Drawer></Drawer>
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          <form
+            className={classes.root}
+            autoComplete="off"
+            onSubmit={createPlan}
+          >
+            <Grid item xs={12}>
+>>>>>>> c2fb7a533fa2acef03bda5dd03d97fa88e029516
               <TextField
                 required
                 id="standard-number"
@@ -142,12 +161,28 @@ const NewPlan = () => {
                   shrink: true,
                 }}
               />
+<<<<<<< HEAD
             </form>
           </Grid>
         </div>
         <div className={`${classes.root} ${classes.test}`}>
           <SubmitButton></SubmitButton>
         </div>
+=======
+            </Grid>
+            <Grid
+              container
+              direction="column"
+              justify="flex-start"
+              alignItems="flex-start"
+              item
+              xs={1}
+            ></Grid>
+          </form>
+        </Grid>
+
+        <SubmitButton></SubmitButton>
+>>>>>>> c2fb7a533fa2acef03bda5dd03d97fa88e029516
       </div>
       <Footer></Footer>
     </>
