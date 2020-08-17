@@ -246,4 +246,4 @@ const EditPlan = (props) => {
   );
 };
 
-export default EditPlan
+export default EditPlan;
