@@ -5,17 +5,31 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from "@material-ui/core/styles";
 
 import Api from "../../utils/api";
 
 import SubmitButton from "../../components/SubmitButton";
+import Footer from "../../components/Footer";
+import { grey, blue } from '@material-ui/core/colors';
 
 const divStyle = {
     margin: '45px',
 };
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      "& .MuiTextField-root": {
+        margin: theme.spacing(1),
+        width: "25ch",
+        backgroundColor: "blue",
+      },
+    },
+}));
+
 const Login = () => {
     const history = useHistory();
+    const classes = useStyles();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -32,9 +46,8 @@ const Login = () => {
         })
     }
     return (
-        <div>
+        <Container className={classes.root}>
             <div style={divStyle}>
-
                 <Container maxwidth="sm">
                     <form onSubmit={doLogin}>
                         <Grid container spacing={3}>
@@ -55,7 +68,7 @@ const Login = () => {
                                 />
                             </Grid>
                             <Grid item xs={4} md={1}>
-                                <SubmitButton type="submit"></SubmitButton>
+                                <Button type="submit" variant="contained">Signin</Button>
 
                             </Grid>
                             <Grid item xs={8} md={11}>
@@ -76,7 +89,7 @@ const Login = () => {
             <div style={divStyle}>
                 <Footer></Footer>
             </div>
-        </div>
+            </Container>
     );
 };
 

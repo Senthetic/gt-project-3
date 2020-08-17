@@ -45,11 +45,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
+  test: {
+    margin: "20px"
+  },
 }));
 
-const divStyle = {
-  margin: '45px',
-};
+
 
 const NewPlan = () => {
   const history = useHistory();
@@ -64,100 +65,89 @@ const NewPlan = () => {
   const handleChange = (event) => {
     console.log(abv);
   };
-  const createPlan = (ev)=>{
+  const createPlan = (ev) => {
     ev.preventDefault();
-    Api.post('/plans',{name:planName})
-    .then(plan => history.push('/editPlan/'+plan.data._id))
+    Api.post('/plans', { name: planName })
+      .then(plan => history.push('/editPlan/' + plan.data._id))
   }
 
   return (
     <>
-    <div className="divStyle">
-    <Drawer></Drawer>
-    </div>
-      <div className={divStyle}>
+      <div className={`${classes.root} ${classes.test}`}>
+        <Drawer></Drawer>
+      </div>
+      <div className={`${classes.root} ${classes.test}`}>
         <Grid container spacing={3}>
-        <form className={classes.root} autoComplete="off" onSubmit={createPlan}>
-          <div className="divStyle">
-          <Grid item xs={12}>
-            
-              <TextField
-                id="outlined-basic"
-                required
-                label="Plan Name"
-                variant="outlined"
-                onChange={(ev) => setPlanName(ev.target.value)}
-              />
-            
-          </Grid>
-          </div>
-          <div className="divStyle">
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={1}
-          >
-            
-            <Fab type="submit" color="primary" aria-label="add" >
-              <AddIcon />
-            </Fab>
-            
-          </Grid>
-          </div>
+          <form className={classes.root} autoComplete="off" onSubmit={createPlan}>
+            <div className={`${classes.root} ${classes.test}`}>
+              <Grid item xs={12}>
+
+                <TextField
+                  id="outlined-basic"
+                  required
+                  label="Plan Name"
+                  variant="outlined"
+                  onChange={(ev) => setPlanName(ev.target.value)}
+                />
+
+                <Fab type="submit" color="primary" aria-label="add" >
+                  <AddIcon />
+                </Fab>
+
+
+              </Grid>
+            </div>
           </form>
-          <div className="divStyle">
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={1}
-          >
-            <IconButton aria-label="delete">
-              <DeleteIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteIcon />
-            </IconButton>
-          </Grid>
+          <div className={`${classes.root} ${classes.test}`}>
+            <Grid
+              container
+              direction="column"
+              justify="flex-start"
+              alignItems="flex-start"
+              item
+              xs={1}
+            >
+              <IconButton aria-label="delete">
+                <DeleteIcon />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <DeleteIcon />
+              </IconButton>
+            </Grid>
           </div>
-<div className="divStyle">
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={6}
-          >
-            <Paper className={classes.paper}>Bud Light</Paper>
-            <Paper className={classes.paper}>Scofflaw Basement</Paper>
-          </Grid>
+          <div className={`${classes.root} ${classes.test}`}>
+            <Grid
+              container
+              direction="column"
+              justify="flex-start"
+              alignItems="flex-start"
+              item
+              xs={6}
+            >
+              <Paper className={classes.paper}>Bud Light</Paper>
+              <Paper className={classes.paper}>Scofflaw Basement</Paper>
+            </Grid>
           </div>
         </Grid>
-        <div className="divStyleS">
-        <Grid item xs={12}>
-          <form className={classes.root} noValidate autoComplete="off">
-            <TextField
-            required
-            id="standard-number"
-            label="Time frame"
-            type="number"
-            helperText="hours"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
+        <div className={`${classes.root} ${classes.test}`}>
+          <Grid item xs={12}>
+            <form className={classes.root} noValidate autoComplete="off">
+              <TextField
+                required
+                id="standard-number"
+                label="Time frame"
+                type="number"
+                helperText="hours"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
             </form>
           </Grid>
-          </div>
-          <div className="divStyle">
+        </div>
+        <div className={`${classes.root} ${classes.test}`}>
           <SubmitButton></SubmitButton>
-          </div>
+        </div>
       </div>
       <Footer></Footer>
     </>
