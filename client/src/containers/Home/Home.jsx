@@ -6,6 +6,8 @@ import Container from "@material-ui/core/Container"
 import {Link} from 'react-router-dom';
 
 import {useHistory} from "react-router-dom";
+import Disclaimer from "../../components/Disclaimer";
+import Footer from "../../components/Footer";
 
 
 
@@ -16,17 +18,6 @@ const useStyles = makeStyles((theme) => ({
       width: "25ch",
     },
   },
-  button: {
-    marginRight:25,
-    marginLeft:25,
-    marginTop:5,
-    paddingTop:5,
-    paddingBottom:5,
-    backgroundColor:'#D9D9D9',
-    borderRadius:10,
-    borderWidth: "5px",
-    borderColor: "black"
-  },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
@@ -34,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  divStyle: {
+    padding: "25 px",
+    marginleft: "25 px",
+  }
 }));
 
 const Home = () => {
@@ -58,12 +53,28 @@ const Home = () => {
   return (
     <>
     <Container>
-      <h1 style={{ marginLeft: "25px"}}>Thirsty?</h1>
-      <Link to="/newPlan">
-        <Button className={classes.button}>Make New Plan</Button>
+      <h1 style={{marginLeft: 0}}>Thirsty?</h1>
+      <Link to="/NewPlan">
+        <Button style={{marginRight:0,
+    marginLeft:0,
+    marginTop:5,
+    paddingTop:5,
+    paddingBottom:5,
+    backgroundColor:'#E8EDDF',
+    borderRadius:10,
+    borderWidth: "5px",
+    borderColor: "black"}}>Make New Plan</Button>
       </Link>
       <Link to="/listPlans">
-        <Button className={classes.button}>View User's Plans</Button>
+        <Button style={{marginRight:25,
+    marginLeft:25,
+    marginTop:5,
+    paddingTop:5,
+    paddingBottom:5,
+    backgroundColor:'#E8EDDF',
+    borderRadius:10,
+    borderWidth: "5px",
+    borderColor: "black"}}>View User's Plans</Button>
       </Link>
     </Container>
     {/* <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>
@@ -146,6 +157,17 @@ const Home = () => {
         <EditIcon />
       </Fab>
       <Footer></Footer> */}
+      <div className={classes.divStyle}>
+        <h1 style={{textAlign: "center",
+      display: "inherit"
+      }}>Disclaimer:</h1>
+
+
+        <Disclaimer></Disclaimer>
+</div>
+      <div>
+        <Footer></Footer>
+      </div>
     </>
   );
 };

@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
+import Disclaimer from '../../components/Disclaimer';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,6 +44,9 @@ const ListPlans = () => {
     return (
         <div>
           <Drawer></Drawer>
+          <div style={{marginBottom: "50px", marginTop: "0"}}>
+            <h1>Choose your plan or delete them here!</h1>
+          </div>
             {plans.map(plan => (
               <Grid container spacing={3} key={plan._id}>  
                 <Grid item xs={3}>
@@ -50,7 +54,7 @@ const ListPlans = () => {
                   <DeleteIcon />
                 </IconButton>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={4}>
                   <Link to={'editPlan/'+plan._id}>
                     <Paper className={classes.paper}>{plan.name}</Paper>
                 </Link>
@@ -58,7 +62,16 @@ const ListPlans = () => {
                 
               </Grid>
             ))}
+            <div>
+              <h1 style={{textAlign: "center",
+      display: "inherit"}}>Disclaimer:</h1>
+            </div>
+            <div>
+              <Disclaimer></Disclaimer>
+            </div>
+            <div>
             <Footer></Footer>
+            </div>
         </div>
     );
 };
