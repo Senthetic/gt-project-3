@@ -6,7 +6,7 @@ const Footer = () => {
   left: "0",
   bottom: "0",
   width: "100%",
-  backgroundColor: "blue",
+  backgroundColor: "#3C6E71",
   color: "white",
   textAlign: "center"
   };

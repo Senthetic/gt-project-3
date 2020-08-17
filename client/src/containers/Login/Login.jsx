@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
         width: "25ch",
       },
     },
+    body: {
+        backgroundColor: "blue",
+    },
 }));
 
 const Login = () => {

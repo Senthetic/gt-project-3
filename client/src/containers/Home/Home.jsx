@@ -29,7 +29,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
-    fontSize: 30,
+    marginRight:25,
+    marginLeft:25,
+    marginTop:5,
+    paddingTop:5,
+    paddingBottom:5,
+    backgroundColor:'#D9D9D9',
+    borderRadius:10,
+    borderWidth: "5px",
+    borderColor: "black"
   },
   formControl: {
     margin: theme.spacing(1),
@@ -82,12 +90,12 @@ const Home = () => {
   return (
     <>
     <Container>
-      <h1>Thirsty?</h1>
+      <h1 style={{ marginLeft: "25px"}}>Thirsty?</h1>
       <Link to="/newPlan">
-        <Button>Make New Plan</Button>
+        <Button className={classes.button}>Make New Plan</Button>
       </Link>
       <Link to="/listPlans">
-        <Button>View User's Plans</Button>
+        <Button className={classes.button}>View User's Plans</Button>
       </Link>
     </Container>
     {/* <h1>JIMMY & BRIAN APPROVE MY PULL REQUEST TO GET THIS COOL STUFF</h1>

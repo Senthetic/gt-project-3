@@ -72,46 +72,47 @@ const NewPlan = () => {
   }
 
   return (
-    <>
-      <div className={`${classes.root} ${classes.test}`}>
-        <Drawer></Drawer>
-      </div>
-      <div className={`${classes.root} ${classes.test}`}>
-        <Grid container spacing={3}>
-            <form
-              className={classes.root}
-              autoComplete="off"
-              onSubmit={createPlan}
-            >
-              <div className={`${classes.root} ${classes.test}`}>
-          <Grid item xs={12}>
-            <TextField
-              id="outlined-basic"
-              required
-              label="Plan Name"
-              variant="outlined"
-              onChange={(ev) => setPlanName(ev.target.value)}
-            />
-          </Grid>
+    <div>
+    <div className={`${classes.root} ${classes.test}`}>
+      <Drawer></Drawer>
+    </div>
+    <h1 style={{marginLeft: "35px"}}>Add a new plan!</h1>
+    <div className={`${classes.root} ${classes.test}`}>
+      <Grid container spacing={3}>
+        <form
+          className={classes.root}
+          autoComplete="off"
+          onSubmit={createPlan}
+        >
+          <div className={`${classes.root} ${classes.test}`}>
+            <Grid item xs={12}>
+              <TextField
+                id="outlined-basic"
+                required
+                label="Plan Name"
+                variant="outlined"
+                onChange={(ev) => setPlanName(ev.target.value)}
+              />
+            </Grid>
           </div>
           <div className={`${classes.root} ${classes.test}`}>
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
-            item
-            xs={1}
-          ></Grid>
+            <Grid
+              container
+              direction="column"
+              justify="flex-start"
+              alignItems="flex-start"
+              item
+              xs={1}
+            ></Grid>
           </div>
-          </form>
-        </Grid>
-<div className={`${classes.root} ${classes.test}`}>
-      <SubmitButton></SubmitButton>
+        </form>
+      </Grid>
+      <div className={`${classes.root} ${classes.test}`}>
+        <SubmitButton></SubmitButton>
       </div>
     </div>
     <Footer></Footer>
-    </>
+    </div>
   );
 };
 
