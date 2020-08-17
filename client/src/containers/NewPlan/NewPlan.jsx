@@ -4,10 +4,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Api from "../../utils/api";
 import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
 import SubmitButton from "../../components/SubmitButton";
+import Disclaimer from "../../components/Disclaimer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
       width: "25ch",
       flexGrow: 1,
     },
-  },
-  button: {
-    fontSize: 30,
   },
   formControl: {
     margin: theme.spacing(1),
@@ -92,7 +91,21 @@ const NewPlan = () => {
         </form>
       </Grid>
       <div className={`${classes.root} ${classes.test}`}>
-        <SubmitButton></SubmitButton>
+        <Button style={{marginRight:25,
+    marginLeft:0,
+    marginTop:5,
+    paddingTop:5,
+    paddingBottom:5,
+    backgroundColor:'#E8EDDF',
+    borderRadius:10,
+    borderWidth: "5px",
+    borderColor: "black"}}>Submit</Button>
+      </div>
+      <div>
+        <h1 style={{textAlign: "center"}}>Disclaimer:</h1>
+      </div>
+      <div>
+        <Disclaimer></Disclaimer>
       </div>
     </div>
     <Footer></Footer>

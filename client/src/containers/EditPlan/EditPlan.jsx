@@ -14,6 +14,7 @@ import Api from "../../utils/api";
 import { Link } from "react-router-dom";
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
+import Disclaimer from "../../components/Disclaimer";
 
 let result = 0;
 let abvResults = 0;
@@ -186,7 +187,7 @@ const EditPlan = (props) => {
                 <DeleteIcon />
               </IconButton>
             </Grid>
-            <Grid item xs="9">
+            <Grid item xs="4">
               <Paper className={classes.paper}>
                 {drink.name} ({drink.alcoholPercentage}%)
               </Paper>
@@ -195,7 +196,7 @@ const EditPlan = (props) => {
         ))}
 
         <Link to={"/addDrink/" + plan._id}>
-          <Fab color="grey" aria-label="add">
+          <Fab color="#E8EDDF" aria-label="add">
             <AddIcon />
           </Fab>
         </Link>
@@ -233,13 +234,27 @@ const EditPlan = (props) => {
         </form>
       </Grid>
       <div>
-        <Button onClick={calculateBAC}>Calculate</Button>
+        <Button style={{marginRight:25,
+    marginLeft:0,
+    marginTop:5,
+    paddingTop:5,
+    paddingBottom:5,
+    backgroundColor:'#E8EDDF',
+    borderRadius:10,
+    borderWidth: "5px",
+    borderColor: "black"}} onClick={calculateBAC}>Calculate</Button>
       </div>
       <div>
         <h2>{bac}</h2>
       </div>
       <div>
         <h3>{resultMessage}</h3>
+      </div>
+      <div>
+        <h1 style={{textAlign: "center"}}>Disclaimer:</h1>
+      </div>
+      <div>
+        <Disclaimer></Disclaimer>
       </div>
       <Footer></Footer>
     </div>
