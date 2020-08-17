@@ -44,7 +44,8 @@ const Login = () => {
             password: password
         }).then(res => {
             localStorage.setItem('token', res.data.token);
-            history.push('/')
+            window.location.reload()
+            // history.push('/')
         }).catch(e => {
             alert('wrong credentials')
         })
