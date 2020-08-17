@@ -4,28 +4,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import EditIcon from "@material-ui/icons/Edit";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
+
+
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Api from "../../utils/api";
 import { Link } from "react-router-dom";
-import Snackbar from "@material-ui/core/Snackbar";
-
-import DrinkSelector from "../../components/DrinkSelector";
 import Drawer from "../../components/Drawer";
 import Footer from "../../components/Footer";
 
 let result = 0;
-let drinkAbv = 0;
-let ounces = 0;
-let percent = 0;
-let drink = 0;
 let abvResults = 0;
 let resultMessage = "";
 
@@ -63,7 +53,7 @@ const EditPlan = (props) => {
   const [plan, setPlan] = React.useState({ drinks: [] });
   const [timeSlot, setTimeSlot] = React.useState(0);
   const [weight, setWeight] = React.useState(0);
-  const [openSnackbar, setOpenSnackbar] = React.useState(true);
+  //const [openSnackbar, setOpenSnackbar] = React.useState(true);
   useEffect(() => {
     getPlan();
 
@@ -118,16 +108,13 @@ const EditPlan = (props) => {
     setWeight(event.target.value);
   };
 
-  const calculateABV = () => {};
 
   const calculateBAC = () => {
     handleAbv();
     //add all fluids
-    let ounces = 32;
 
     //add all % then divide by # of drinks
-    let percent = abv;
-    let hours = timeSlot;
+  
     //r = .55 female .68 male
     //Every time a drink is added, multiply ounces and the bac *.075
     //GAC = total alcohol consumed in grams (total vol of all drinks)^^^ *
@@ -138,7 +125,7 @@ const EditPlan = (props) => {
         "You are at the only safe driving limit and are not legally intoxicated.";
       console.log("-- neglible amount --");
     } else {
-      if (result == "NaN") resultMessage = "Please try again.";
+      if (result === "NaN") resultMessage = "Please try again.";
       if (result < 0.03)
         resultMessage =
           "You feel mildly relaxed and maybe a little lightheaded. Your inhibitions are slightly loosened, and whatever mood you were in before you started drinking may be mildly intensified";
