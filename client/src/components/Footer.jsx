@@ -20,8 +20,8 @@ const Footer = () => {
           {" "}
           <h1>
             Disclaimer: {" "}
-          </h1>
-          <p>By accessing or using the Blackout Preventer App or any
+          </h1> 
+           <p>By accessing or using the Blackout Preventer App or any
             page of this app, you signify your assent to this disclaimer. The
             contents of this app, including without limitation, all data,
             information, text, graphics, links, and other materials are provided
