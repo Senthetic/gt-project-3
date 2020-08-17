@@ -31,8 +31,16 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
   },
-  button: {
-    fontSize: 30,
+    button: {
+      marginRight:25,
+      marginLeft:25,
+      marginTop:5,
+      paddingTop:5,
+      paddingBottom:5,
+      backgroundColor:'#D9D9D9',
+      borderRadius:10,
+      borderWidth: "5px",
+      borderColor: "black"
   },
   formControl: {
     margin: theme.spacing(1),
@@ -187,7 +195,7 @@ const EditPlan = (props) => {
         ))}
 
         <Link to={"/addDrink/" + plan._id}>
-          <Fab color="primary" aria-label="add">
+          <Fab color="grey" aria-label="add">
             <AddIcon />
           </Fab>
         </Link>

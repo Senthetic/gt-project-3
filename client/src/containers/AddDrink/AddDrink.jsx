@@ -22,7 +22,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
-    fontSize: 30,
+    marginRight: 25,
+    marginLeft: 25,
+    marginTop: 5,
+    paddingTop: 5,
+    paddingBottom: 5,
+    backgroundColor: '#284B63',
+    borderRadius: 10,
+    borderWidth: "5px",
+    borderColor: "black"
   },
   formControl: {
     margin: theme.spacing(1),
@@ -31,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  divStyle: {
+    padding: "10px",
+    marginleft: "10px",
+  }
 }));
 
 const AddDrink = ({ match }) => {
@@ -58,38 +70,59 @@ const AddDrink = ({ match }) => {
 
   return (
     <div>
-      <h1>Blackout Preventer</h1>
+      <div className={classes.divStyle}>
+        <h1>Add your drink for your plan!</h1>
+      </div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Type</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={drink.category}
-          onChange={(ev) => setDrink({ ...drink, category: ev.target.value })}
-        >
-          <MenuItem value={5}>Beer</MenuItem>
-          <MenuItem value={12}>Wine</MenuItem>
-          <MenuItem value={40}>Liquor</MenuItem>
-        </Select>
-        <DrinkSelector onSelected={handleDrink} variant="standard" />
-
-        <TextField
-          required
-          id="standard-number"
-          label="Volume"
-          type="number"
-          helperText="oz"
-          value={drink.size}
-          onChange={(ev) => setDrink({ ...drink, size: ev.target.value })}
-          //question multiple onChanges? in order to keep updating state onChange={handleChange}
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        
-        <Button onClick={() => addDrink()} variant="contained" color="primary">
-          Submit
+        <div className={classes.divStyle}>
+          <TextField
+            id="standard-select-currency"
+            select
+            label="Type"
+            value={drink.category}
+            onChange={(ev) => setDrink({ ...drink, category: ev.target.value })}
+            style={{width: "100%"}}
+            helperText="Choose drink type"
+          >
+            <MenuItem value={5}>Beer</MenuItem>
+            <MenuItem value={12}>Wine</MenuItem>
+            <MenuItem value={40}>Liquor</MenuItem>
+          </TextField>
+          {/* <InputLabel id="demo-simple-select-label">Type</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={drink.category}
+            onChange={(ev) => setDrink({ ...drink, category: ev.target.value })}
+          >
+            <MenuItem value={5}>Beer</MenuItem>
+            <MenuItem value={12}>Wine</MenuItem>
+            <MenuItem value={40}>Liquor</MenuItem>
+          </Select> */}
+        </div>
+        <div className={classes.divStyle}>
+          <DrinkSelector onSelected={handleDrink} variant="standard" />
+        </div>
+        <div className={classes.divStyle}>
+          <TextField
+            required
+            id="standard-number"
+            label="Volume"
+            type="number"
+            helperText="oz"
+            value={drink.size}
+            onChange={(ev) => setDrink({ ...drink, size: ev.target.value })}
+            //question multiple onChanges? in order to keep updating state onChange={handleChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        </div>
+        <div className={classes.divStyle}>
+          <Button className={classes.button} onClick={() => addDrink()} variant="contained">
+            Submit
         </Button>
+        </div>
       </FormControl>
     </div>
   );

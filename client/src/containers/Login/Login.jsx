@@ -23,6 +23,12 @@ const useStyles = makeStyles((theme) => ({
         width: "25ch",
       },
     },
+    body: {
+        backgroundColor: "blue",
+    },
+    button: {
+        backgroundColor: "#D9D9D9"
+    }
 }));
 
 const Login = () => {
@@ -66,17 +72,13 @@ const Login = () => {
                                 />
                             </Grid>
                             <Grid item xs={4} md={1}>
-                                <Button type="submit" variant="contained">Signin</Button>
+                                <Button className={classes.button} type="submit" variant="contained">Signin</Button>
 
                             </Grid>
                             <Grid item xs={8} md={11}>
                                 <Link to="/signup">
                                     <Button
-
-                                        type="button"
-                                        variant="contained"
-
-                                    >Signup</Button>
+                                    className={classes.button} type="button" variant= "contained">Signup</Button>
                                 </Link>
                             </Grid>
 
