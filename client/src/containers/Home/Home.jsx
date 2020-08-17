@@ -1,21 +1,9 @@
 import React, { useEffect } from "react";
-import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import EditIcon from "@material-ui/icons/Edit";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
 import Container from "@material-ui/core/Container"
 
-import DrinkSelector from "../../components/DrinkSelector";
 import {Link} from 'react-router-dom';
-import Drawer from "../../components/Drawer";
-import Footer from "../../components/Footer";
-import SubmitButton from "../../components/SubmitButton";
 
 import {useHistory} from "react-router-dom";
 
@@ -42,33 +30,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const history = useHistory();
-  const classes = useStyles();
   const [abv, setAbv] = React.useState("");
   // const [bac, setBac] = React.useState('');
   // const [ounces, setOunces] = React.useState('');
   // const [weight, setWeight] = React.useState('');
   // const [hours, setHours] = React.useState('');
 
-  const handleChange = (event) => {
-    //possibly where we would add the math to calculate BAC
-    // var newBac = (ounces * percent * 0.075) / weight - hours * 0.015;
-    // if (newBac < 0) {
-    //   message =
-    //     "You are at the only safe driving limit and are not legally intoxicated.";
-    //   newBac = "-- neglible amount --";
-    // } else {
-    //   if (newBac == "NaN") message = "Please try again.";
-    //   if (newBac > 0.08)
-    //     message =
-    //       "You would be considered legally intoxicated in all or most states and would be subject to criminal penalties.";
-    //   if (newBac < 0.08) message = "Your driving ability is becoming impaired.";
-    // }
-    //set new calculated bac and have it update with state on the page
-    // setBac(newBac);
-
-    setAbv(event.target.value);
-    console.log(abv);
-  };
   useEffect(()=>{
     console.log(localStorage.token)
     if(!localStorage.token || localStorage.token === null){
