@@ -2,13 +2,13 @@ import React from "react";
 
 const Footer = () => {
   const footerStyle = {
-    position: "fixed",
-    left: "0",
-    bottom: "0",
-    width: "100%",
-    backgroundColor: "blue",
-    color: "white",
-    textAlign: "center",
+  position: "fixed",
+  left: "0",
+  bottom: "0",
+  width: "100%",
+  backgroundColor: "#3C6E71",
+  color: "white",
+  textAlign: "center"
   };
   return (
     <footer className="container">

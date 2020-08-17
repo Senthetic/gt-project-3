@@ -92,6 +92,7 @@ const Signup = () => {
                         label="Height"
                         required
                         type="number"
+                        helperText="inches"
                         onChange={ev => setUser({...user, height:ev.target.value})}
                     />
                 </Grid>

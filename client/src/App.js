@@ -11,7 +11,8 @@ import AddDrink from "./containers/AddDrink/AddDrink";
 import Login from "./containers/Login/Login";
 import Signup from "./containers/Signup/Signup";
 import Drawer from "./components/Drawer";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+import "./App.css";
 
 function App() {
   
