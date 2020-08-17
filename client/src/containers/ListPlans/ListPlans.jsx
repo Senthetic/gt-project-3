@@ -44,6 +44,7 @@ const ListPlans = () => {
     return (
         <div>
           <Drawer></Drawer>
+          <div style={{marginLeft:100}}>
           <div style={{marginBottom: "50px", marginTop: "0"}}>
             <h1>Choose your plan or delete them here!</h1>
           </div>
@@ -62,11 +63,10 @@ const ListPlans = () => {
                 
               </Grid>
             ))}
-            <div>
-              <h1 style={{textAlign: "center",
-      display: "inherit"}}>Disclaimer:</h1>
             </div>
             <div>
+              <h1 style={{textAlign: "center", marginTop: "225px"}}>Disclaimer:</h1>
+
               <Disclaimer></Disclaimer>
             </div>
             <div>

@@ -2,17 +2,10 @@ import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container"
-
 import {Link} from 'react-router-dom';
-
-<<<<<<< HEAD
 import {useHistory} from "react-router-dom";
 import Disclaimer from "../../components/Disclaimer";
 import Footer from "../../components/Footer";
-
-=======
->>>>>>> cfaf41376ec4d28131ffd644637426898da77764
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,8 +47,10 @@ const Home = () => {
         <Button style={{marginRight:0,
     marginLeft:0,
     marginTop:5,
-    paddingTop:5,
-    paddingBottom:5,
+    paddingTop:25,
+    paddingLeft:25,
+    paddingRight:25,
+    paddingBottom:25,
     backgroundColor:'#E8EDDF',
     borderRadius:10,
     borderWidth: "5px",
@@ -65,8 +60,10 @@ const Home = () => {
         <Button style={{marginRight:25,
     marginLeft:25,
     marginTop:5,
-    paddingTop:5,
-    paddingBottom:5,
+    paddingTop:25,
+    paddingLeft:25,
+    paddingRight:25,
+    paddingBottom:25,
     backgroundColor:'#E8EDDF',
     borderRadius:10,
     borderWidth: "5px",
@@ -153,7 +150,7 @@ const Home = () => {
         <EditIcon />
       </Fab>
       <Footer></Footer> */}
-      <div className={classes.divStyle}>
+      <div style={{marginTop:  "650px"}} className={classes.divStyle}>
         <h1 style={{textAlign: "center",
       display: "inherit"
       }}>Disclaimer:</h1>

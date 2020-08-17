@@ -11,7 +11,7 @@ const Disclaimer = () => {
         textAlign: "center"
     };
 return (
-    <p style={{display: "block"}}> By accessing or using the Blackout Preventer App or any
+    <p style={{}}> By accessing or using the Blackout Preventer App or any
     page of this app, you signify your assent to this disclaimer. The
     contents of this app, including without limitation, all data,
     information, text, graphics, links, and other materials are provided
