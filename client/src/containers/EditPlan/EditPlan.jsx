@@ -124,7 +124,7 @@ const EditPlan = (props) => {
       case (result<.02):
             resultMessage = ("You're sober... no alcohol in your system");
             break;
-        case (result <= .03 && result >= .02):
+        case (result <= .03):
             resultMessage =("You feel mildly relaxed and maybe a little lightheaded. Your inhibitions are slightly loosened, and whatever mood you were in before you started drinking may be mildly intensified.");
             break;
         case (result <= .06):
