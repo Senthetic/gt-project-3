@@ -32,16 +32,16 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
   },
-    button: {
-      marginRight:25,
-      marginLeft:25,
-      marginTop:5,
-      paddingTop:5,
-      paddingBottom:5,
-      backgroundColor:'#D9D9D9',
-      borderRadius:10,
-      borderWidth: "5px",
-      borderColor: "black"
+  button: {
+    marginRight: 25,
+    marginLeft: 25,
+    marginTop: 5,
+    paddingTop: 5,
+    paddingBottom: 5,
+    backgroundColor: '#D9D9D9',
+    borderRadius: 10,
+    borderWidth: "5px",
+    borderColor: "black"
   },
   formControl: {
     margin: theme.spacing(1),
@@ -123,141 +123,146 @@ const EditPlan = (props) => {
     //add all fluids
 
     //add all % then divide by # of drinks
-  
+
     //r = .55 female .68 male
     //Every time a drink is added, multiply ounces and the bac *.075
     //GAC = total alcohol consumed in grams (total vol of all drinks)^^^ *
     // result = (GAC/(Body Weight grams x r)) * 100
     result = abvResults / weight - timeSlot * 0.015;
     switch (true) {
-      case (result<.02):
-            resultMessage = ("You're sober... no alcohol in your system");
-            break;
-        case (result <= .03):
-            resultMessage =("You feel mildly relaxed and maybe a little lightheaded. Your inhibitions are slightly loosened, and whatever mood you were in before you started drinking may be mildly intensified.");
-            break;
-        case (result <= .06):
-            resultMessage = ("You feel warm and relaxed. If you're the shy type when you're sober, you lose your feelings of shyness. Your behavior may become exaggerated, making you talk louder or faster or act bolder than usual. Emotions are intensified, so your good moods are better and your bad moods are worse. You may also feel a mild sense of euphoria.");
-            break;
-        case (result <= .09):
-            resultMessage = ("You believe you're functioning better than you actually are. At this level, you may start to slur your speech. Your sense of balance is probably off, and your motor skills are starting to become impaired. Your ability to see and hear clearly is diminished. Your judgment is being affected, so it's difficult for you to decide whether or not to continue drinking. Your ability to evaluate sexual situations is impaired. Students may jokingly refer to this state of mind as beer goggles, but this BAC can have serious repercussions.");
-            break;
-        case (result <= .12):
-            resultMessage = ("At this level, you feel euphoric, but you lack coordination and balance. Your motor skills are markedly impaired, as are your judgment and memory. You probably don't remember how many drinks you've had. Your emotions are exaggerated, and some people become loud, aggressive, or belligerent. If you're a guy, you may have trouble getting an erection when your BAC is this high.");
-            break;
-        case (result < .14):
-            resultMessage = ("At this level, you feel euphoric, but you lack coordination and balance. Your motor skills are markedly impaired, as are your judgment and memory. You probably don't remember how many drinks you've had. Your emotions are exaggerated, and some people become loud, aggressive, or belligerent. If you're a guy, you may have trouble getting an erection when your BAC is this high.");
-            break;
-        case (result <= .17):
-            resultMessage = ("Your euphoric feelings may give way to unpleasant feelings. You have difficulty talking, walking, or even standing.Your judgment and perception are severely impaired. You may become more aggressive, and there is an increased risk of accidentally injuring yourself or others. This is the point when you may experience a blackout.");
-            break;
-        case (result > .17):
-            resultMessage = ("You will probably black out...");
-            break;
-        default:
-            resultMessage = ("You're sober... no alcohol in your system");
-            break;
+      case (result < .02):
+        resultMessage = ("You're sober... no alcohol in your system");
+        break;
+      case (result <= .03):
+        resultMessage = ("You feel mildly relaxed and maybe a little lightheaded. Your inhibitions are slightly loosened, and whatever mood you were in before you started drinking may be mildly intensified.");
+        break;
+      case (result <= .06):
+        resultMessage = ("You feel warm and relaxed. If you're the shy type when you're sober, you lose your feelings of shyness. Your behavior may become exaggerated, making you talk louder or faster or act bolder than usual. Emotions are intensified, so your good moods are better and your bad moods are worse. You may also feel a mild sense of euphoria.");
+        break;
+      case (result <= .09):
+        resultMessage = ("You believe you're functioning better than you actually are. At this level, you may start to slur your speech. Your sense of balance is probably off, and your motor skills are starting to become impaired. Your ability to see and hear clearly is diminished. Your judgment is being affected, so it's difficult for you to decide whether or not to continue drinking. Your ability to evaluate sexual situations is impaired. Students may jokingly refer to this state of mind as beer goggles, but this BAC can have serious repercussions.");
+        break;
+      case (result <= .12):
+        resultMessage = ("At this level, you feel euphoric, but you lack coordination and balance. Your motor skills are markedly impaired, as are your judgment and memory. You probably don't remember how many drinks you've had. Your emotions are exaggerated, and some people become loud, aggressive, or belligerent. If you're a guy, you may have trouble getting an erection when your BAC is this high.");
+        break;
+      case (result < .14):
+        resultMessage = ("At this level, you feel euphoric, but you lack coordination and balance. Your motor skills are markedly impaired, as are your judgment and memory. You probably don't remember how many drinks you've had. Your emotions are exaggerated, and some people become loud, aggressive, or belligerent. If you're a guy, you may have trouble getting an erection when your BAC is this high.");
+        break;
+      case (result <= .17):
+        resultMessage = ("Your euphoric feelings may give way to unpleasant feelings. You have difficulty talking, walking, or even standing.Your judgment and perception are severely impaired. You may become more aggressive, and there is an increased risk of accidentally injuring yourself or others. This is the point when you may experience a blackout.");
+        break;
+      case (result > .17):
+        resultMessage = ("You will probably black out...");
+        break;
+      default:
+        resultMessage = ("You're sober... no alcohol in your system");
+        break;
     }
     handleBac();
   };
 
   return (
     <div>
-   
+      <h1 style={{ marginBottom: "25px", marginLeft:100 }}>Edit your plan here!</h1>
+      <div style={{marginLeft:100}}>
+        <div className={`${classes.root}`}>
+          <form style={{ marginBottom: "25px", marginTop: "25px" }} className={classes.root} noValidate autoComplete="off">
+            <TextField
+              id="outlined-basic"
+              label="Edit Plan Name"
+              variant="outlined"
+              defaultValue="loading..."
+              value={plan.name}
+              onChange={(ev) => setPlan({ ...plan, name: ev.target.value })}
+            />
+          </form>
 
-      <div className={`${classes.root}`}>
-        <form className={classes.root} noValidate autoComplete="off">
-          <TextField
-            id="outlined-basic"
-            label="Edit Plan Name"
-            variant="outlined"
-            defaultValue="loading..."
-            value={plan.name}
-            onChange={(ev) => setPlan({ ...plan, name: ev.target.value })}
-          />
-        </form>
-
-        {plan.drinks.map((drink) => (
-          <Grid container spacing={3}>
-            <Grid item xs="3">
-              <IconButton
-                aria-label="delete"
-                onClick={() => deleteDrink(drink._id)}
-              >
-                <DeleteIcon />
-              </IconButton>
-            </Grid>
-            <Grid item xs="4">
-              <Paper className={classes.paper}>
-                {drink.name} ({drink.alcoholPercentage}%)
+          {plan.drinks.map((drink) => (
+            <Grid style={{ marginTop: "25px", marginBottom: "25px" }} container spacing={3}>
+              <Grid item xs="3">
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => deleteDrink(drink._id)}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Grid>
+              <Grid item xs="4">
+                <Paper className={classes.paper}>
+                  {drink.name} ({drink.alcoholPercentage}%)
               </Paper>
+              </Grid>
             </Grid>
-          </Grid>
-        ))}
+          ))}
 
-        <Link to={"/addDrink/" + plan._id}>
-          <Fab color="#E8EDDF" aria-label="add">
-            <AddIcon />
-          </Fab>
-        </Link>
+          <Link style={{ marginTop: "25px", marginBottom: "25px" }} to={"/addDrink/" + plan._id}>
+            <Fab color="#E8EDDF" aria-label="add">
+              <AddIcon />
+            </Fab>
+          </Link>
+        </div>
+        <Grid item xs={12}>
+          <form style={{ marginTop: "25px", marginBottom: "25px" }} className={classes.root} noValidate autoComplete="off">
+            <TextField
+              required
+              id="standard-number"
+              label="Weight"
+              type="number"
+              onChange={handleWeight}
+              value={weight}
+              helperText="lbs"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </form>
+        </Grid>
+        <Grid item xs={12}>
+          <form style={{ marginTop: "50pxpx", marginBottom: "25px" }} className={classes.root} noValidate autoComplete="off">
+            <TextField
+              required
+              id="standard-number"
+              label="Time frame"
+              type="number"
+              onChange={handleTime}
+              value={timeSlot}
+              helperText="hours"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </form>
+        </Grid>
+        <div>
+          <Button style={{
+            marginRight: 25,
+            marginLeft: 0,
+            marginTop: 25,
+            paddingTop: 25,
+            paddingLeft: 25,
+            paddingRight: 25,
+            paddingBottom: 25,
+            backgroundColor: '#E8EDDF',
+            borderRadius: 10,
+            borderWidth: "5px",
+            borderColor: "black"
+          }} onClick={calculateBAC}>Calculate</Button>
+        </div>
+        <div>
+          <h2>{bac}</h2>
+        </div>
+        </div>
+        <div>
+          <h3>{resultMessage}</h3>
+        </div>
+        <div style={{ marginTop: "75px" }}>
+          <h1 style={{ textAlign: "center" }}>Disclaimer:</h1>
+
+
+          <Disclaimer></Disclaimer>
+        </div>
+        <Footer></Footer>
       </div>
-      <Grid item xs={12}>
-        <form className={classes.root} noValidate autoComplete="off">
-          <TextField
-            required
-            id="standard-number"
-            label="Weight"
-            type="number"
-            onChange={handleWeight}
-            value={weight}
-            helperText="lbs"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-        </form>
-      </Grid>
-      <Grid item xs={12}>
-        <form className={classes.root} noValidate autoComplete="off">
-          <TextField
-            required
-            id="standard-number"
-            label="Time frame"
-            type="number"
-            onChange={handleTime}
-            value={timeSlot}
-            helperText="hours"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-        </form>
-      </Grid>
-      <div>
-        <Button style={{marginRight:25,
-    marginLeft:0,
-    marginTop:5,
-    paddingTop:5,
-    paddingBottom:5,
-    backgroundColor:'#E8EDDF',
-    borderRadius:10,
-    borderWidth: "5px",
-    borderColor: "black"}} onClick={calculateBAC}>Calculate</Button>
-      </div>
-      <div>
-        <h2>{bac}</h2>
-      </div>
-      <div>
-        <h3>{resultMessage}</h3>
-      </div>
-      <div>
-        <h1 style={{textAlign: "center"}}>Disclaimer:</h1>
-      </div>
-      <div>
-        <Disclaimer></Disclaimer>
-      </div>
-      <Footer></Footer>
-    </div>
   );
 };
 

@@ -9,6 +9,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText'
 import SubmitButton from "../../components/SubmitButton";
+import Button from '@material-ui/core/Button';
+
 
 import Api from "../../utils/api"
 import Footer from '../../components/Footer';
@@ -100,7 +102,17 @@ const Signup = () => {
                     />
                 </Grid>
                 <Grid item xs={4} md={1}>
-                    <SubmitButton type="submit"></SubmitButton>
+                    <Button style={{marginRight: 25,
+                                            marginLeft: 0,
+                                            marginTop: 5,
+                                            paddingTop: 25,
+                                            paddingLeft:25,
+                                            paddingRight:25,
+                                            paddingBottom: 25,
+                                            backgroundColor: '#E8EDDF',
+                                            borderRadius: 10,
+                                            borderWidth: "5px",
+                                            borderColor: "black"}} type="submit">SignUp</Button>
                     
                 </Grid>
                 
@@ -110,7 +122,7 @@ const Signup = () => {
         </Container>
         </div>
         <div>
-        <h1 style={{textAlign: "center",
+        <h1 style={{textAlign: "center", marginTop: "180px"
       }}>Disclaimer:</h1>
         <Disclaimer></Disclaimer>
       </div>

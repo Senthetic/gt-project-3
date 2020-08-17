@@ -55,10 +55,11 @@ const NewPlan = () => {
   }
 
   return (
-    <div>
+    <div style={{marginLeft:100}}>
     <div className={`${classes.root} ${classes.test}`}>
       <Drawer></Drawer>
     </div>
+    <div>
     <h1 style={{marginLeft: "35px"}}>Add a new plan!</h1>
     <div className={`${classes.root} ${classes.test}`}>
       <Grid container spacing={3}>
@@ -94,18 +95,21 @@ const NewPlan = () => {
         <Button style={{marginRight:25,
     marginLeft:0,
     marginTop:5,
-    paddingTop:5,
-    paddingBottom:5,
+    paddingTop:25,
+    paddingRight:25,
+    paddingLeft:25,
+    paddingBottom:25,
     backgroundColor:'#E8EDDF',
     borderRadius:10,
     borderWidth: "5px",
     borderColor: "black"}}>Submit</Button>
       </div>
-      <div>
-        <h1 style={{textAlign: "center"}}>Disclaimer:</h1>
       </div>
-      <div>
-        <Disclaimer></Disclaimer>
+      <div style={{marginTop: "425px"}}>
+        <h1 style={{textAlign: "center"}}>Disclaimer:</h1>
+ 
+ 
+        <Disclaimer style={{marginLeft:0}}></Disclaimer>
       </div>
     </div>
     <Footer></Footer>

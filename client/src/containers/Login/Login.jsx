@@ -19,17 +19,14 @@ const divStyle = {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      "& .MuiTextField-root": {
-        margin: theme.spacing(1),
-        width: "25ch",
-      },
+        "& .MuiTextField-root": {
+            margin: theme.spacing(1),
+            width: "25ch",
+        },
     },
     body: {
         backgroundColor: "blue",
     },
-    button: {
-        backgroundColor: "#D9D9D9"
-    }
 }));
 
 const Login = () => {
@@ -74,13 +71,37 @@ const Login = () => {
                                 />
                             </Grid>
                             <Grid item xs={4} md={1}>
-                                <Button className={classes.button} type="submit" variant="contained">Signin</Button>
+                                <Button style={{
+                                    marginRight: 5,
+                                    marginLeft: 5,
+                                    marginTop: 5,
+                                    paddingTop: 25,
+                                    paddingLeft:25,
+                                    paddingRight:25,
+                                    paddingBottom: 25,
+                                    backgroundColor: '#E8EDDF',
+                                    borderRadius: 15,
+                                    borderWidth: "5px",
+                                    borderColor: "black"
+                                }} type="submit" variant="contained">Signin</Button>
 
                             </Grid>
                             <Grid item xs={8} md={11}>
                                 <Link to="/signup">
                                     <Button
-                                    className={classes.button} type="button" variant= "contained">Signup</Button>
+                                        style={{
+                                            marginRight: 25,
+                                            marginLeft: 25,
+                                            marginTop: 5,
+                                            paddingTop: 25,
+                                            paddingLeft:25,
+                                            paddingRight:25,
+                                            paddingBottom: 25,
+                                            backgroundColor: '#E8EDDF',
+                                            borderRadius: 10,
+                                            borderWidth: "5px",
+                                            borderColor: "black"
+                                        }} type="button" variant="contained">Signup</Button>
                                 </Link>
                             </Grid>
 
@@ -88,17 +109,18 @@ const Login = () => {
                     </form>
                 </Container>
             </div>
-            <div>
-        <h1 style={{textAlign: "center",
-      }}>Disclaimer:</h1>
+            <div style={{ marginTop: "500px" }}>
+                <h1 style={{
+                    textAlign: "center",
+                }}>Disclaimer:</h1>
 
 
-        <Disclaimer></Disclaimer>
-      </div>
+                <Disclaimer style={{ textAlign: "bottom" }}></Disclaimer>
+            </div>
             <div style={divStyle}>
                 <Footer></Footer>
             </div>
-            </Container>
+        </Container>
     );
 };
 
