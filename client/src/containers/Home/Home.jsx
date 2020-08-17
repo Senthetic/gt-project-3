@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const history = useHistory();
   const [abv, setAbv] = React.useState("");
+  const classes = useStyles;
   // const [bac, setBac] = React.useState('');
   // const [ounces, setOunces] = React.useState('');
   // const [weight, setWeight] = React.useState('');
