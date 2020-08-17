@@ -45,7 +45,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
+  test: {
+    margin: "20px"
+  },
 }));
+
+
 
 const NewPlan = () => {
   const history = useHistory();
@@ -62,46 +67,53 @@ const NewPlan = () => {
   };
   const createPlan = (ev) => {
     ev.preventDefault();
-    Api.post("/plans", { name: planName }).then((plan) =>
-      history.push("/editPlan/" + plan.data._id)
-    );
-  };
+    Api.post('/plans', { name: planName })
+      .then(plan => history.push('/editPlan/' + plan.data._id))
+  }
 
   return (
     <>
-      <Drawer></Drawer>
-      <div className={classes.root}>
+      <div className={`${classes.root} ${classes.test}`}>
+        <Drawer></Drawer>
+      </div>
+      <div className={`${classes.root} ${classes.test}`}>
         <Grid container spacing={3}>
-          <form
-            className={classes.root}
-            autoComplete="off"
-            onSubmit={createPlan}
-          >
-            <Grid item xs={12}>
-              <TextField
-                id="outlined-basic"
-                required
-                label="Plan Name"
-                variant="outlined"
-                onChange={(ev) => setPlanName(ev.target.value)}
-              />
-            </Grid>
-            <Grid
-              container
-              direction="column"
-              justify="flex-start"
-              alignItems="flex-start"
-              item
-              xs={1}
-            ></Grid>
+            <form
+              className={classes.root}
+              autoComplete="off"
+              onSubmit={createPlan}
+            >
+              <div className={`${classes.root} ${classes.test}`}>
+          <Grid item xs={12}>
+            <TextField
+              id="outlined-basic"
+              required
+              label="Plan Name"
+              variant="outlined"
+              onChange={(ev) => setPlanName(ev.target.value)}
+            />
+          </Grid>
+          </div>
+          <div className={`${classes.root} ${classes.test}`}>
+          <Grid
+            container
+            direction="column"
+            justify="flex-start"
+            alignItems="flex-start"
+            item
+            xs={1}
+          ></Grid>
+          </div>
           </form>
         </Grid>
-
-        <SubmitButton></SubmitButton>
+<div className={`${classes.root} ${classes.test}`}>
+      <SubmitButton></SubmitButton>
       </div>
-      <Footer></Footer>
+    </div>
+    <Footer></Footer>
     </>
   );
 };
+
 
 export default NewPlan;

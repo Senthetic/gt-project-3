@@ -119,7 +119,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Persistent drawer
+            Blackout Preventer
           </Typography>
         </Toolbar>
       </AppBar>
@@ -151,18 +151,8 @@ export default function PersistentDrawerLeft() {
             </ListItem>
             <ListItem button>
               <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
-              <ListItemText primary="Add Drink" />
-              <ListItemLink href="/AddDrink/:planId"></ListItemLink>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
               <ListItemText primary="List Plans" />
               <ListItemLink href="/ListPlans"></ListItemLink>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
-              <ListItemText primary="Edit Plans" />
-              <ListItemLink href="/EditPlan/:planId"></ListItemLink>
             </ListItem>
             <ListItem button>
               <ListItemIcon> <InboxIcon /> : <MailIcon /></ListItemIcon>
