@@ -23,7 +23,7 @@ let resultMessage = "";
 const useStyles = makeStyles((theme) => ({
   //brian use this on all pages
   test: {
-    marginTop: "75px",
+    marginTop: "0",
   },
   root: {
     "& .MuiTextField-root": {
