@@ -1,4 +1,4 @@
-# gt-project-3
+# Blackout Preventer
 Welcome to blackout preventer with this app you will enter the amount you are drinking along with the timeframe and also your height and weight and you will be given your BAC along with a message related to that BAC levell.
 
 
