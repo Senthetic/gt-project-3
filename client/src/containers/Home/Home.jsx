@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import {useHistory} from "react-router-dom";
 import Disclaimer from "../../components/Disclaimer";
 import Footer from "../../components/Footer";
-import {Link} from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
