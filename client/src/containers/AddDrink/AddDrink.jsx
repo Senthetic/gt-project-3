@@ -76,7 +76,7 @@ const AddDrink = ({ match }) => {
           <TextField
             id="standard-select-currency"
             select
-            label="Volume"
+            label="Type"
             value={drink.category}
             onChange={(ev) => setDrink({ ...drink, category: ev.target.value })}
             style={{width: "100%"}}
